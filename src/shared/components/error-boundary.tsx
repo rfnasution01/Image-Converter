@@ -1,3 +1,5 @@
+'use client';
+
 import { Component, type ErrorInfo, type PropsWithChildren, type ReactNode } from 'react';
 
 import { Button } from '@/components/ui/button';

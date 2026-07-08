@@ -3,9 +3,14 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   darkMode: ['class'],
-  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{ts,tsx,mdx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-inter-tight)', 'var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-jetbrains-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

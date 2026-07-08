@@ -1,0 +1,112 @@
+import type { Metadata } from 'next';
+import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
+import Link from 'next/link';
+import { Shuffle } from 'lucide-react';
+import type { PropsWithChildren } from 'react';
+
+import { AppQueryProvider } from '@/providers/query-provider';
+import { ErrorBoundary } from '@/shared/components/error-boundary';
+import '@/index.css';
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const interTight = Inter_Tight({ subsets: ['latin'], variable: '--font-inter-tight', display: 'swap' });
+const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jetbrains-mono', display: 'swap' });
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  applicationName: 'FileFlow',
+  manifest: '/favicon/site.webmanifest',
+  title: {
+    default: 'FileFlow - Private Image Converter',
+    template: '%s | FileFlow',
+  },
+  description: 'Convert JPG, PNG, and WebP images privately in your browser with fast batch export. No upload, no watermark, and free to use.',
+  keywords: ['image converter', 'jpg to png', 'png to webp', 'jpg converter', 'png converter', 'browser image converter', 'FileFlow'],
+  authors: [{ name: 'FileFlow' }],
+  creator: 'FileFlow',
+  publisher: 'FileFlow',
+  category: 'technology',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  openGraph: {
+    title: 'FileFlow - Private Image Converter',
+    description: 'Fast, private, browser-based image conversion with batch ZIP export.',
+    url: '/',
+    siteName: 'FileFlow',
+    locale: 'id_ID',
+    type: 'website',
+    images: [
+      {
+        url: '/favicon/logo.png',
+        width: 292,
+        height: 315,
+        alt: 'FileFlow logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FileFlow - Private Image Converter',
+    description: 'Convert images privately in your browser with fast batch ZIP export.',
+    images: ['/favicon/logo.png'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon/favicon.ico' },
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    apple: [{ url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: ['/favicon/favicon.ico'],
+  },
+  alternates: {
+    canonical: '/',
+  },
+};
+
+export default function RootLayout({ children }: PropsWithChildren) {
+  return (
+    <html lang="id">
+      <body className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
+        <AppQueryProvider>
+          <div className="min-h-screen bg-[#f6fbff] font-sans text-foreground">
+            <header className="fixed inset-x-0 top-0 z-50 border-b border-slate-200/60 bg-[#f6fbff]/80 backdrop-blur-xl">
+              <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+                <Link href="/" className="flex items-center gap-3" aria-label="FileFlow home">
+                  <Shuffle className="size-9 text-slate-900" strokeWidth={3} />
+                  <span className="font-heading text-xl font-extrabold tracking-tight text-slate-950">FileFlow</span>
+                </Link>
+
+                <nav className="hidden items-center gap-9 text-[15px] font-medium text-slate-950 md:flex" aria-label="Main navigation">
+                  <a href="/#converter" className="transition hover:text-primary">Converter</a>
+                  <a href="/#how-it-works" className="transition hover:text-primary">How it works</a>
+                  <a href="/#privacy" className="transition hover:text-primary">Privacy</a>
+                  <Link href="/donate" className="transition hover:text-primary">Donate</Link>
+                </nav>
+
+                <Link href="/donate" className="rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/20 transition hover:bg-blue-700">
+                  Donate
+                </Link>
+              </div>
+            </header>
+
+            <main className="pt-20">
+              <ErrorBoundary>{children}</ErrorBoundary>
+            </main>
+          </div>
+        </AppQueryProvider>
+      </body>
+    </html>
+  );
+}
