@@ -4,24 +4,24 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
+    --background: 220 100% 98%;
+    --foreground: 238 52% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --primary: 221 83% 53%;
+    --card-foreground: 238 52% 12%;
+    --primary: 244 96% 67%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 160 84% 39%;
-    --accent-foreground: 0 0% 100%;
+    --secondary: 222 100% 97%;
+    --secondary-foreground: 238 52% 12%;
+    --muted: 222 100% 97%;
+    --muted-foreground: 237 12% 44%;
+    --accent: 183 86% 46%;
+    --accent-foreground: 238 52% 12%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
-    --radius: 0.75rem;
+    --border: 225 38% 90%;
+    --input: 225 38% 90%;
+    --ring: 244 96% 67%;
+    --radius: 1rem;
   }
 
   html {
@@ -32,12 +32,18 @@
   }
 
   * { @apply border-border; }
-  body { @apply bg-background text-foreground antialiased; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    background:
+      radial-gradient(circle at 0% 6%, rgba(255, 255, 255, 0.96) 0, rgba(255, 255, 255, 0.9) 20%, transparent 42%),
+      radial-gradient(circle at 90% 8%, rgba(99, 91, 255, 0.12), transparent 30%),
+      linear-gradient(180deg, #f5f8ff 0%, #ffffff 48%, #eef4ff 72%, #ffffff 100%);
+  }
 
   section { scroll-margin-top: 5rem; }
 
   ::selection {
-    background: rgba(37, 99, 235, 0.16);
+    background: rgba(99, 91, 255, 0.18);
     color: #0f172a;
   }
 
@@ -56,14 +62,14 @@
     border: 3px solid transparent;
     border-radius: 999px;
     background:
-      linear-gradient(180deg, #2563eb, #10b981) border-box;
+      linear-gradient(180deg, #635bff, #15c8d4) border-box;
     background-clip: padding-box;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.36);
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background:
-      linear-gradient(180deg, #1d4ed8, #059669) border-box;
+      linear-gradient(180deg, #5147f5, #11aebb) border-box;
     background-clip: padding-box;
   }
 
