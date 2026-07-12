@@ -1,9 +1,9 @@
 {
   "id": "/",
-  "name": "FileFlow - Private Image Converter",
-  "short_name": "FileFlow",
-  "description": "Convert JPG, PNG, and WebP images privately in your browser, with batch ZIP export and offline access after first visit.",
-  "lang": "id-ID",
+  "name": "PixConvertly - Free Private Image Converter",
+  "short_name": "PixConvertly",
+  "description": "Convert JPG, PNG, WebP, AVIF, and HEIC/HEIF images privately in your browser, with batch ZIP export and offline access after first visit.",
+  "lang": "en-US",
   "dir": "ltr",
   "categories": ["photo", "productivity", "utilities"],
   "icons": [
@@ -31,14 +31,14 @@
     {
       "name": "Open Converter",
       "short_name": "Converter",
-      "description": "Convert images locally in your browser.",
+      "description": "Convert JPG, PNG, WebP, AVIF, and HEIC images locally in your browser."
       "url": "/#converter",
       "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
     },
     {
       "name": "Privacy Info",
       "short_name": "Privacy",
-      "description": "Learn how FileFlow processes images locally.",
+      "description": "Learn how PixConvertly processes images locally.",
       "url": "/#privacy",
       "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
     }

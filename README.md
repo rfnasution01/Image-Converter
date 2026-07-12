@@ -1,6 +1,6 @@
-# FileFlow Image Converter
+# PixConvertly Image Converter
 
-FileFlow adalah aplikasi **image converter berbasis browser** yang dibangun dengan **Next.js 14 App Router**, React, TypeScript, dan Tailwind CSS. Aplikasi ini mengonversi gambar langsung di browser menggunakan Canvas API, sehingga file pengguna tidak perlu di-upload ke server.
+PixConvertly adalah aplikasi **image converter berbasis browser** yang dibangun dengan **Next.js 14 App Router**, React, TypeScript, dan Tailwind CSS. Aplikasi ini mengonversi gambar langsung di browser menggunakan Canvas API, sehingga file pengguna tidak perlu di-upload ke server.
 
 ## Fitur utama
 

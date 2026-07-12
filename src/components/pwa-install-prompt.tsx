@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 
-const DISMISS_KEY = 'fileflow-pwa-install-dismissed';
+const DISMISS_KEY = 'pixconvertly-pwa-install-dismissed';
 
 type InstallPromptOutcome = 'accepted' | 'dismissed';
 
@@ -37,7 +37,7 @@ export function PwaInstallPrompt() {
 
     const registerServiceWorker = () => {
       navigator.serviceWorker.register('/sw.js').catch((error: unknown) => {
-        console.error('Failed to register FileFlow service worker', error);
+        console.error('Failed to register PixConvertly service worker', error);
       });
     };
 
@@ -94,14 +94,14 @@ export function PwaInstallPrompt() {
   }
 
   return (
-    <aside className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-xl rounded-3xl border border-border bg-card/95 p-4 text-card-foreground shadow-2xl backdrop-blur md:left-auto md:right-6 md:max-w-md" aria-label="Install FileFlow app prompt">
+    <aside className="fixed bottom-4 left-4 right-4 z-50 mx-auto max-w-xl rounded-3xl border border-border bg-card/95 p-4 text-card-foreground shadow-2xl backdrop-blur md:left-auto md:right-6 md:max-w-md" aria-label="Install PixConvertly app prompt">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
           <span className="mt-1 grid size-10 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
             <Download className="size-5" aria-hidden="true" />
           </span>
           <div>
-            <p className="font-heading text-sm font-black text-foreground">Install FileFlow</p>
+            <p className="font-heading text-sm font-black text-foreground">Install PixConvertly</p>
             <p className="mt-1 text-sm text-muted-foreground">Buka converter lebih cepat dan gunakan lagi secara offline setelah kunjungan pertama.</p>
           </div>
         </div>

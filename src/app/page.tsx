@@ -3,29 +3,29 @@ import type { Metadata } from 'next';
 import { HomePage } from '@/screens/home-page';
 
 export const metadata: Metadata = {
-  title: 'Free JPG to PNG, PNG to WebP, and WebP to JPG Converter',
-  description: 'Convert JPG to PNG, PNG to WebP, WebP to JPG, and batch export converted images as ZIP directly in your browser. Private, fast, and free.',
-  keywords: ['JPG to PNG converter', 'PNG to WebP converter', 'WebP to JPG converter', 'batch image converter', 'private image converter'],
+  title: 'Free Online Image Converter for JPG, PNG, WebP, AVIF, and HEIC',
+  description: 'Use PixConvertly to convert JPG to PNG, PNG to WebP, WebP to JPG, HEIC to JPG, and batch export converted images as ZIP. Private, fast, and free.',
+  keywords: ['free online image converter', 'JPG to PNG converter', 'PNG to WebP converter', 'WebP to JPG converter', 'HEIC to JPG converter', 'AVIF converter', 'batch image converter', 'private image converter'],
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Free JPG to PNG, PNG to WebP, and WebP to JPG Converter',
-    description: 'Private browser-based image conversion for JPG, PNG, WebP, HEIC/HEIF, and batch ZIP export.',
+    title: 'PixConvertly Free Online Image Converter',
+    description: 'Convert JPG, PNG, WebP, AVIF, and HEIC/HEIF images privately in your browser with batch ZIP export.',
     url: '/',
     images: [
       {
         url: '/favicon/logo.png',
         width: 292,
         height: 315,
-        alt: 'FileFlow logo',
+        alt: 'PixConvertly logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free JPG to PNG, PNG to WebP, and WebP to JPG Converter',
-    description: 'Convert JPG, PNG, and WebP images privately in your browser.',
+    title: 'PixConvertly Free Online Image Converter',
+    description: 'Convert JPG, PNG, WebP, AVIF, and HEIC/HEIF images privately in your browser.',
     images: ['/favicon/logo.png'],
   },
 };
@@ -35,7 +35,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 const faqStructuredData = [
   {
     '@type': 'Question',
-    name: 'Can I use FileFlow as a JPG to PNG converter?',
+    name: 'Can I use PixConvertly as a JPG to PNG converter?',
     acceptedAnswer: {
       '@type': 'Answer',
       text: 'Yes. Upload one or more JPG images, choose PNG as the output format, and download the converted PNG files individually or as a ZIP.',
@@ -43,10 +43,10 @@ const faqStructuredData = [
   },
   {
     '@type': 'Question',
-    name: 'Can FileFlow convert PNG to WebP for smaller website images?',
+    name: 'Can PixConvertly convert PNG to WebP for smaller website images?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'Yes. Choose WebP output, adjust quality if needed, and FileFlow will convert PNG files locally in your browser for lighter web-friendly images.',
+      text: 'Yes. Choose WebP output, adjust quality if needed, and PixConvertly will convert PNG files locally in your browser for lighter web-friendly images.',
     },
   },
   {
@@ -54,7 +54,7 @@ const faqStructuredData = [
     name: 'Can I convert WebP to JPG?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'Yes. FileFlow supports WebP to JPG conversion for compatibility with tools, forms, and platforms that do not accept WebP files.',
+      text: 'Yes. PixConvertly supports WebP to JPG conversion for compatibility with tools, forms, and platforms that do not accept WebP files.',
     },
   },
   {
@@ -62,7 +62,7 @@ const faqStructuredData = [
     name: 'Are my files uploaded?',
     acceptedAnswer: {
       '@type': 'Answer',
-      text: 'No. FileFlow converts images locally in your browser with the Canvas API, so selected files are not uploaded to our server.',
+      text: 'No. PixConvertly converts images locally in your browser with the Canvas API, so selected files are not uploaded to our server.',
     },
   },
   {
@@ -87,17 +87,17 @@ const structuredData: Record<string, unknown>[] = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: 'FileFlow Image Converter',
+    name: 'PixConvertly Image Converter',
     applicationCategory: 'MultimediaApplication',
     operatingSystem: 'Any',
     url: siteUrl,
-    description: 'Private browser-based JPG to PNG, PNG to WebP, WebP to JPG, and batch image converter with resize, quality, and ZIP export.',
+    description: 'Free online image converter for JPG, PNG, WebP, AVIF, and HEIC/HEIF with private browser-based processing, resize, quality controls, and batch ZIP export.',
     offers: {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
     },
-    featureList: ['JPG to PNG converter', 'PNG to WebP converter', 'WebP to JPG converter', 'Batch image converter', 'Local browser processing', 'ZIP export'],
+    featureList: ['JPG to PNG converter', 'PNG to WebP converter', 'WebP to JPG converter', 'HEIC to JPG converter', 'AVIF converter', 'Batch image converter', 'Local browser processing', 'ZIP export'],
   },
   {
     '@context': 'https://schema.org',

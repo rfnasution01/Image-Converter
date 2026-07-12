@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fileflow-pwa-v1';
+const CACHE_NAME = 'pixconvertly-pwa-v1';
 
 const APP_SHELL_URLS = [
   '/',

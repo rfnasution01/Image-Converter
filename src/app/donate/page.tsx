@@ -4,27 +4,27 @@ import { DonatePage } from '@/screens/donate-page';
 
 export const metadata: Metadata = {
   title: 'Donate',
-  description: 'Support FileFlow with crypto donations or USD donations via PayPal.',
+  description: 'Support PixConvertly with crypto donations or USD donations via PayPal.',
   alternates: {
     canonical: '/donate',
   },
   openGraph: {
-    title: 'Donate to FileFlow',
-    description: 'Support FileFlow with crypto donations or USD donations via PayPal.',
+    title: 'Donate to PixConvertly',
+    description: 'Support PixConvertly with crypto donations or USD donations via PayPal.',
     url: '/donate',
     images: [
       {
         url: '/favicon/logo.png',
         width: 292,
         height: 315,
-        alt: 'FileFlow logo',
+        alt: 'PixConvertly logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Donate to FileFlow',
-    description: 'Support FileFlow with crypto or PayPal.',
+    title: 'Donate to PixConvertly',
+    description: 'Support PixConvertly with crypto or PayPal.',
     images: ['/favicon/logo.png'],
   },
 };

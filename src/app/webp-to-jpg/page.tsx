@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import { ConverterLandingPage } from '@/screens/converter-landing-page';
 
 export const metadata: Metadata = {
-  title: 'Free WebP to JPG Converter',
-  description: 'Convert WebP to JPG online in your browser. Private local conversion with batch support, resize controls, quality settings, and ZIP export.',
+  title: 'Free WebP to JPG Converter Online',
+  description: 'Convert WebP to JPG online for free with PixConvertly. Private local conversion with batch support, resize controls, quality settings, and ZIP export.',
+  keywords: ['WebP to JPG converter', 'convert WebP to JPG online', 'free JPG converter', 'batch WebP to JPG'],
   alternates: { canonical: '/webp-to-jpg' },
 };
 

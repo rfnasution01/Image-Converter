@@ -19,20 +19,20 @@ const steps = [
 
 const faqs = [
   {
-    question: 'Can I use FileFlow as a JPG to PNG converter?',
+    question: 'Can I use PixConvertly as a JPG to PNG converter?',
     answer: 'Yes. Upload one or more JPG images, choose PNG as the output format, and download the converted PNG files individually or as a ZIP.',
   },
   {
-    question: 'Can FileFlow convert PNG to WebP for smaller website images?',
-    answer: 'Yes. Choose WebP output, adjust quality if needed, and FileFlow will convert PNG files locally in your browser for lighter web-friendly images.',
+    question: 'Can PixConvertly convert PNG to WebP for smaller website images?',
+    answer: 'Yes. Choose WebP output, adjust quality if needed, and PixConvertly will convert PNG files locally in your browser for lighter web-friendly images.',
   },
   {
     question: 'Can I convert WebP to JPG?',
-    answer: 'Yes. FileFlow supports WebP to JPG conversion for compatibility with tools, forms, and platforms that do not accept WebP files.',
+    answer: 'Yes. PixConvertly supports WebP to JPG conversion for compatibility with tools, forms, and platforms that do not accept WebP files.',
   },
   {
     question: 'Are my files uploaded?',
-    answer: 'No. FileFlow converts images locally in your browser with the Canvas API, so selected files are not uploaded to our server.',
+    answer: 'No. PixConvertly converts images locally in your browser with the Canvas API, so selected files are not uploaded to our server.',
   },
   {
     question: 'Is image metadata removed?',
@@ -44,7 +44,7 @@ const faqs = [
   },
 ];
 
-const onboardingStorageKey = 'fileflow-onboarding-completed';
+const onboardingStorageKey = 'pixconvertly-onboarding-completed';
 const maxResizeDimension = 12000;
 const maxResizePercentage = 500;
 const conversionConcurrencyLimit = 3;
@@ -486,7 +486,7 @@ export function HomePage() {
     });
 
     const blob = await zip.generateAsync({ type: 'blob' });
-    downloadBlob(blob, `fileflow-images-${selectedFormat.extension}.zip`);
+    downloadBlob(blob, `pixconvertly-images-${selectedFormat.extension}.zip`);
     setIsZipping(false);
   };
 
@@ -600,10 +600,10 @@ export function HomePage() {
               <ShieldCheck className="size-4" /> Private browser-based conversion
             </p>
             <h1 className="mt-6 font-heading text-5xl font-black leading-[0.96] tracking-[-0.06em] text-foreground sm:text-6xl lg:text-7xl">
-              Free JPG to PNG, PNG to WebP, and WebP to JPG converter
+              PixConvertly free online image converter
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-xl">
-              Use FileFlow as a private JPG to PNG converter, PNG to WebP converter, WebP to JPG converter, and batch image converter. Upload images, choose the output format, then download. No account, no watermark, and your files never leave your device.
+              Convert JPG to PNG, PNG to WebP, WebP to JPG, HEIC to JPG, AVIF, and more with PixConvertly. Upload images, choose the output format, then download. No account, no watermark, and your files never leave your device.
             </p>
             <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-muted-foreground">
               <span className="inline-flex items-center gap-2"><CheckCircle2 className="size-4 text-accent" /> Free to use</span>
@@ -986,7 +986,7 @@ export function HomePage() {
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">Popular conversion tools</p>
             <h2 className="mt-3 font-heading text-4xl font-black tracking-[-0.05em] text-foreground">Convert common image formats in one private workspace.</h2>
-            <p className="mt-4 text-sm leading-6 text-muted-foreground">FileFlow covers high-intent conversion workflows without sending files to a server: JPG to PNG, PNG to WebP, WebP to JPG, plus batch image conversion with ZIP export.</p>
+            <p className="mt-4 text-sm leading-6 text-muted-foreground">PixConvertly covers high-intent conversion workflows without sending files to a server: JPG to PNG, PNG to WebP, WebP to JPG, plus batch image conversion with ZIP export.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <article className="rounded-[1.5rem] border border-border bg-card p-5 shadow-sm">
@@ -1032,8 +1032,8 @@ export function HomePage() {
         <div className="relative mx-auto max-w-6xl">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <div>
-              <h2 className="font-heading text-3xl font-black tracking-tight">FileFlow</h2>
-              <p className="mt-4 leading-7 text-muted-foreground">A simple, private image converter for JPG, PNG, WebP, and HEIC/HEIF files.</p>
+              <h2 className="font-heading text-3xl font-black tracking-tight">PixConvertly</h2>
+              <p className="mt-4 leading-7 text-muted-foreground">A free, private online image converter for JPG, PNG, WebP, AVIF, and HEIC/HEIF files.</p>
             </div>
             <div>
               <h2 className="text-lg font-bold">Available tools</h2>
@@ -1050,7 +1050,7 @@ export function HomePage() {
               <p className="mt-3 leading-7 text-muted-foreground">Conversion through canvas usually strips most embedded metadata, including many EXIF fields, without claiming guaranteed removal in every browser.</p>
             </div>
           </div>
-          <p className="mt-12 border-t border-border pt-7 text-sm text-muted-foreground">© {new Date().getFullYear()} FileFlow. All rights reserved.</p>
+          <p className="mt-12 border-t border-border pt-7 text-sm text-muted-foreground">© {new Date().getFullYear()} PixConvertly. All rights reserved.</p>
         </div>
       </footer>
     </div>

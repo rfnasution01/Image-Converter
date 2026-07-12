@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 
-const themeStorageKey = 'fileflow-theme';
+const themeStorageKey = 'pixconvertly-theme';
 type ThemePreference = 'light' | 'dark';
 
 function getSystemTheme(): ThemePreference {

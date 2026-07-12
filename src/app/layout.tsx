@@ -18,17 +18,17 @@ const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-jet
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: 'FileFlow',
+  applicationName: 'PixConvertly',
   manifest: '/favicon/site.webmanifest',
   title: {
-    default: 'FileFlow - Private Image Converter',
-    template: '%s | FileFlow',
+    default: 'PixConvertly - Free Private Image Converter Online',
+    template: '%s | PixConvertly',
   },
-  description: 'Convert JPG, PNG, and WebP images privately in your browser with fast batch export. No upload, no watermark, and free to use.',
-  keywords: ['image converter', 'jpg to png', 'png to webp', 'webp to jpg', 'batch image converter', 'jpg converter', 'png converter', 'browser image converter', 'FileFlow'],
-  authors: [{ name: 'FileFlow' }],
-  creator: 'FileFlow',
-  publisher: 'FileFlow',
+  description: 'PixConvertly is a free online image converter for JPG, PNG, WebP, AVIF, and HEIC/HEIF. Convert images privately in your browser with batch ZIP export.',
+  keywords: ['PixConvertly', 'free image converter', 'online image converter', 'jpg to png converter', 'png to webp converter', 'webp to jpg converter', 'batch image converter', 'private image converter', 'browser image converter', 'convert images online'],
+  authors: [{ name: 'PixConvertly' }],
+  creator: 'PixConvertly',
+  publisher: 'PixConvertly',
   category: 'technology',
   robots: {
     index: true,
@@ -42,25 +42,25 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'FileFlow - Private Image Converter',
-    description: 'Fast, private, browser-based image conversion with batch ZIP export.',
+    title: 'PixConvertly - Free Private Image Converter Online',
+    description: 'Convert JPG, PNG, WebP, AVIF, and HEIC/HEIF images online with private browser-based processing and batch ZIP downloads.',
     url: '/',
-    siteName: 'FileFlow',
-    locale: 'id_ID',
+    siteName: 'PixConvertly',
+    locale: 'en_US',
     type: 'website',
     images: [
       {
         url: '/favicon/logo.png',
         width: 292,
         height: 315,
-        alt: 'FileFlow logo',
+        alt: 'PixConvertly logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FileFlow - Private Image Converter',
-    description: 'Convert images privately in your browser with fast batch ZIP export.',
+    title: 'PixConvertly - Free Private Image Converter Online',
+    description: 'Free online image converter for JPG, PNG, WebP, AVIF, and HEIC/HEIF with private local processing.',
     images: ['/favicon/logo.png'],
   },
   icons: {
@@ -79,15 +79,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="id" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
         <AppQueryProvider>
           <div className="min-h-screen bg-background font-sans text-foreground">
             <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-card/75 backdrop-blur-xl">
               <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                <Link href="/" className="flex items-center gap-3" aria-label="FileFlow home">
+                <Link href="/" className="flex items-center gap-3" aria-label="PixConvertly home">
                   <span className="grid size-10 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-[0_14px_35px_rgba(99,91,255,0.25)]"><Shuffle className="size-5" strokeWidth={3} /></span>
-                  <span className="font-heading text-xl font-black tracking-tight text-foreground">FileFlow</span>
+                  <span className="font-heading text-xl font-black tracking-tight text-foreground">PixConvertly</span>
                 </Link>
 
                 <nav className="hidden items-center gap-9 text-[14px] font-bold text-foreground md:flex" aria-label="Main navigation">

@@ -77,10 +77,10 @@ export function DonatePage() {
 				<div className="mx-auto max-w-6xl">
 					<div className="mx-auto max-w-3xl text-center">
 						<p className="mx-auto inline-flex items-center gap-2 rounded-full border border-primary/10 bg-card/80 px-4 py-2 text-sm font-semibold text-primary shadow-sm">
-							<Heart className="size-4" /> Support FileFlow
+							<Heart className="size-4" /> Support PixConvertly
 						</p>
 						<h1 className="mt-5 font-heading text-4xl font-extrabold tracking-[-0.04em] text-foreground sm:text-6xl">
-							Help keep FileFlow free
+							Help keep PixConvertly free
 						</h1>
 						<p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-muted-foreground">
 							Your donation helps maintain a fast, private, browser-based image
