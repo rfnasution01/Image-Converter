@@ -9,8 +9,8 @@ type LoadingStateProps = {
 
 export function LoadingState({ text = 'Memuat...', className }: LoadingStateProps) {
   return (
-    <div className={cn('flex items-center justify-center gap-2 rounded-xl border bg-card p-6 text-sm text-muted-foreground', className)}>
-      <Loader2 className="size-5 animate-spin text-primary" />
+    <div className={cn('flex items-center justify-center gap-2 rounded-xl border bg-card p-6 text-sm text-muted-foreground', className)} role="status" aria-live="polite">
+      <Loader2 className="size-5 animate-spin text-primary" aria-hidden="true" />
       {text}
     </div>
   );

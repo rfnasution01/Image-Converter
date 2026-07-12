@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-ts-tailwind-boilerplate",
+  "name": "fileflow-image-converter",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -38,6 +38,7 @@
     "dayjs": "^1.11.13",
     "dompurify": "^3.2.3",
     "framer-motion": "^11.15.0",
+    "heic2any": "^0.0.4",
     "jszip": "^3.10.1",
     "lucide-react": "^0.468.0",
     "next": "^14.2.23",

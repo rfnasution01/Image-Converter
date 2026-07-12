@@ -127,7 +127,7 @@ export function ComponentsShowcasePage() {
             <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="destructive">Destructive</Button>
-            <Button size="icon"><Sparkles className="size-4" /></Button>
+            <Button size="icon" aria-label="Contoh tombol ikon"><Sparkles className="size-4" /></Button>
           </div>
         </Section>
 

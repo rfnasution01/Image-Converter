@@ -127,17 +127,17 @@ function TablePagination({ page, pageCount, totalItems, isLoading, onPageChange 
         Menampilkan halaman <span className="font-medium text-foreground">{page}</span> dari {pageCount} ({totalItems} data)
       </p>
       <div className="flex items-center gap-2">
-        <Button disabled={isLoading || page <= 1} size="icon" type="button" variant="outline" onClick={() => onPageChange(1)}>
+        <Button disabled={isLoading || page <= 1} size="icon" type="button" variant="outline" onClick={() => onPageChange(1)} aria-label="Buka halaman pertama">
           <ChevronsLeft className="size-4" />
         </Button>
-        <Button disabled={isLoading || page <= 1} size="icon" type="button" variant="outline" onClick={() => onPageChange(page - 1)}>
+        <Button disabled={isLoading || page <= 1} size="icon" type="button" variant="outline" onClick={() => onPageChange(page - 1)} aria-label="Buka halaman sebelumnya">
           <ChevronLeft className="size-4" />
         </Button>
         <span className="min-w-20 text-center text-sm">{page} / {pageCount}</span>
-        <Button disabled={isLoading || page >= pageCount} size="icon" type="button" variant="outline" onClick={() => onPageChange(page + 1)}>
+        <Button disabled={isLoading || page >= pageCount} size="icon" type="button" variant="outline" onClick={() => onPageChange(page + 1)} aria-label="Buka halaman berikutnya">
           <ChevronRight className="size-4" />
         </Button>
-        <Button disabled={isLoading || page >= pageCount} size="icon" type="button" variant="outline" onClick={() => onPageChange(pageCount)}>
+        <Button disabled={isLoading || page >= pageCount} size="icon" type="button" variant="outline" onClick={() => onPageChange(pageCount)} aria-label="Buka halaman terakhir">
           <ChevronsRight className="size-4" />
         </Button>
       </div>

@@ -1,7 +1,11 @@
 {
+  "id": "/",
   "name": "FileFlow - Private Image Converter",
   "short_name": "FileFlow",
-  "description": "Convert JPG, PNG, and WebP images privately in your browser.",
+  "description": "Convert JPG, PNG, and WebP images privately in your browser, with batch ZIP export and offline access after first visit.",
+  "lang": "id-ID",
+  "dir": "ltr",
+  "categories": ["photo", "productivity", "utilities"],
   "icons": [
     {
       "src": "/favicon/android-chrome-192x192.png",
@@ -16,9 +20,27 @@
       "purpose": "any maskable"
     }
   ],
-  "theme_color": "#f6fbff",
+  "theme_color": "#635bff",
   "background_color": "#f6fbff",
   "display": "standalone",
-  "start_url": "/",
-  "scope": "/"
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "Open Converter",
+      "short_name": "Converter",
+      "description": "Convert images locally in your browser.",
+      "url": "/#converter",
+      "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Privacy Info",
+      "short_name": "Privacy",
+      "description": "Learn how FileFlow processes images locally.",
+      "url": "/#privacy",
+      "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ]
 }

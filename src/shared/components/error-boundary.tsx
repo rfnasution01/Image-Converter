@@ -23,7 +23,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   render() {
     if (this.state.hasError) {
       return this.props.fallback ?? (
-        <Card>
+        <Card role="alert">
           <CardHeader>
             <CardTitle>Terjadi kesalahan</CardTitle>
             <CardDescription>Aplikasi mengalami error saat menampilkan halaman.</CardDescription>

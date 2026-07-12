@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Shuffle } from 'lucide-react';
 import type { PropsWithChildren } from 'react';
 
+import { PwaInstallPrompt } from '@/components/pwa-install-prompt';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { AppQueryProvider } from '@/providers/query-provider';
 import { ErrorBoundary } from '@/shared/components/error-boundary';
 import '@/index.css';
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
     template: '%s | FileFlow',
   },
   description: 'Convert JPG, PNG, and WebP images privately in your browser with fast batch export. No upload, no watermark, and free to use.',
-  keywords: ['image converter', 'jpg to png', 'png to webp', 'jpg converter', 'png converter', 'browser image converter', 'FileFlow'],
+  keywords: ['image converter', 'jpg to png', 'png to webp', 'webp to jpg', 'batch image converter', 'jpg converter', 'png converter', 'browser image converter', 'FileFlow'],
   authors: [{ name: 'FileFlow' }],
   creator: 'FileFlow',
   publisher: 'FileFlow',
@@ -77,33 +79,38 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="id">
+    <html lang="id" suppressHydrationWarning>
       <body className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
         <AppQueryProvider>
           <div className="min-h-screen bg-background font-sans text-foreground">
-            <header className="fixed inset-x-0 top-0 z-50 border-b border-white/70 bg-white/75 backdrop-blur-xl">
+            <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-card/75 backdrop-blur-xl">
               <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-3" aria-label="FileFlow home">
-                  <span className="grid size-10 place-items-center rounded-2xl bg-primary text-white shadow-[0_14px_35px_rgba(99,91,255,0.25)]"><Shuffle className="size-5" strokeWidth={3} /></span>
+                  <span className="grid size-10 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-[0_14px_35px_rgba(99,91,255,0.25)]"><Shuffle className="size-5" strokeWidth={3} /></span>
                   <span className="font-heading text-xl font-black tracking-tight text-foreground">FileFlow</span>
                 </Link>
 
                 <nav className="hidden items-center gap-9 text-[14px] font-bold text-foreground md:flex" aria-label="Main navigation">
                   <a href="/#converter" className="transition hover:text-primary">Converter</a>
                   <a href="/#how-it-works" className="transition hover:text-primary">How it works</a>
+                  <a href="/#conversion-tools" className="transition hover:text-primary">Tools</a>
                   <a href="/#privacy" className="transition hover:text-primary">Privacy</a>
                   <Link href="/donate" className="transition hover:text-primary">Donate</Link>
                 </nav>
 
-                <Link href="/donate" className="rounded-full bg-primary px-5 py-2.5 text-sm font-extrabold text-white shadow-[0_14px_35px_rgba(99,91,255,0.25)] transition hover:-translate-y-0.5 hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/20">
-                  Donate
-                </Link>
+                <div className="flex items-center gap-2">
+                  <ThemeToggle />
+                  <Link href="/donate" className="rounded-full bg-primary px-5 py-2.5 text-sm font-extrabold text-primary-foreground shadow-[0_14px_35px_rgba(99,91,255,0.25)] transition hover:-translate-y-0.5 hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/20">
+                    Donate
+                  </Link>
+                </div>
               </div>
             </header>
 
             <main className="pt-20">
               <ErrorBoundary>{children}</ErrorBoundary>
             </main>
+            <PwaInstallPrompt />
           </div>
         </AppQueryProvider>
       </body>

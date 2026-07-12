@@ -1,9 +1,9 @@
 # AGENTS.md
 
-Panduan kerja untuk coding agent dan developer pada boilerplate ini.
+Panduan kerja untuk coding agent dan developer pada project FileFlow Image Converter.
 
 ## Stack utama
-- Vite + React + TypeScript.
+- Next.js App Router + React + TypeScript.
 - Tailwind CSS dengan CSS variables untuk light/dark mode.
 - Alias import `@/*` menuju `src/*`.
 - Komponen UI dasar mengikuti pola shadcn/ui + Radix UI.
