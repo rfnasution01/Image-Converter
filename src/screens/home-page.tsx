@@ -963,8 +963,9 @@ export function HomePage() {
         </div>
       </section>
 
-      <section id="how-it-works" className="relative px-4 py-14 sm:px-6 lg:px-8">
-        <img src="/assets/design-system/section-wave.png" alt="" aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full w-full object-cover opacity-90" />
+      <section id="how-it-works" className="relative z-0 overflow-hidden px-4 py-14 sm:px-6 lg:px-8">
+        <img src="/assets/design-system/section-wave.png" alt="" aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-full w-full object-cover opacity-90 transition-opacity duration-300 dark:opacity-0" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 hidden bg-[radial-gradient(ellipse_at_center,hsl(var(--secondary)/0.72)_0%,hsl(var(--background)/0.94)_72%,hsl(var(--background))_100%)] dark:block" />
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto mb-10 max-w-2xl text-center">
             <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">How it works</p>
@@ -972,7 +973,7 @@ export function HomePage() {
           </div>
           <div className="grid gap-5 md:grid-cols-3">
             {steps.map((step, index) => (
-              <div key={step.title} className="rounded-[1.75rem] border border-border bg-card p-6 shadow-[0_22px_70px_rgba(18,18,43,0.08)] transition hover:-translate-y-1">
+              <div key={step.title} className="rounded-[1.75rem] border border-border bg-card/95 p-6 shadow-[0_22px_70px_rgba(18,18,43,0.08)] transition hover:-translate-y-1 dark:bg-card/90 dark:shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
                 <div className="grid size-11 place-items-center rounded-2xl bg-primary text-sm font-black text-primary-foreground shadow-[0_14px_35px_rgba(99,91,255,0.24)]">{index + 1}</div>
                 <h2 className="mt-5 font-heading text-xl font-black tracking-tight">{step.title}</h2>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{step.description}</p>

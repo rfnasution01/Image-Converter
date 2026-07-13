@@ -99,6 +99,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 </nav>
 
                 <div className="flex items-center gap-2">
+                  <PwaInstallPrompt showTrigger />
                   <ThemeToggle />
                   <Link href="/donate" className="rounded-full bg-primary px-5 py-2.5 text-sm font-extrabold text-primary-foreground shadow-[0_14px_35px_rgba(99,91,255,0.25)] transition hover:-translate-y-0.5 hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/20">
                     Donate
@@ -110,7 +111,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <main className="pt-20">
               <ErrorBoundary>{children}</ErrorBoundary>
             </main>
-            <PwaInstallPrompt />
           </div>
         </AppQueryProvider>
       </body>

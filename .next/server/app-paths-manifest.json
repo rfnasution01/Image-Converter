@@ -1,11 +1,3 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/robots.txt/route": "app/robots.txt/route.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/donate/page": "app/donate/page.js",
-  "/jpg-to-png/page": "app/jpg-to-png/page.js",
-  "/webp-to-jpg/page": "app/webp-to-jpg/page.js",
-  "/page": "app/page.js",
-  "/privacy-policy/page": "app/privacy-policy/page.js",
-  "/png-to-webp/page": "app/png-to-webp/page.js"
+  "/page": "app/page.js"
 }
