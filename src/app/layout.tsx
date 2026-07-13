@@ -94,7 +94,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                   <a href="/#converter" className="transition hover:text-primary">Converter</a>
                   <a href="/#how-it-works" className="transition hover:text-primary">How it works</a>
                   <a href="/#conversion-tools" className="transition hover:text-primary">Tools</a>
-                  <a href="/#privacy" className="transition hover:text-primary">Privacy</a>
+                  <Link href="/privacy-policy" className="transition hover:text-primary">Privacy</Link>
                   <Link href="/donate" className="transition hover:text-primary">Donate</Link>
                 </nav>
 

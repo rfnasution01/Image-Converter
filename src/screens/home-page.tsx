@@ -1,6 +1,7 @@
 'use client';
 
 import JSZip from 'jszip';
+import Link from 'next/link';
 import { CheckCircle2, CircleHelp, Download, FileArchive, ImageIcon, ShieldCheck, Trash2, UploadCloud } from 'lucide-react';
 import { ChangeEvent, DragEvent, KeyboardEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
@@ -1050,7 +1051,10 @@ export function HomePage() {
               <p className="mt-3 leading-7 text-muted-foreground">Conversion through canvas usually strips most embedded metadata, including many EXIF fields, without claiming guaranteed removal in every browser.</p>
             </div>
           </div>
-          <p className="mt-12 border-t border-border pt-7 text-sm text-muted-foreground">© {new Date().getFullYear()} PixConvertly. All rights reserved.</p>
+          <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-7 text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} PixConvertly. All rights reserved.</p>
+            <Link href="/privacy-policy" className="font-bold transition hover:text-primary">Privacy Policy</Link>
+          </div>
         </div>
       </footer>
     </div>

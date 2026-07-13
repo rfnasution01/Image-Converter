@@ -31,7 +31,7 @@
     {
       "name": "Open Converter",
       "short_name": "Converter",
-      "description": "Convert JPG, PNG, WebP, AVIF, and HEIC images locally in your browser."
+      "description": "Convert JPG, PNG, WebP, AVIF, and HEIC images locally in your browser.",
       "url": "/#converter",
       "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
     },
@@ -39,7 +39,7 @@
       "name": "Privacy Info",
       "short_name": "Privacy",
       "description": "Learn how PixConvertly processes images locally.",
-      "url": "/#privacy",
+      "url": "/privacy-policy",
       "icons": [{ "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192" }]
     }
   ]
