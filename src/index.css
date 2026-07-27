@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 220 100% 98%;
-    --foreground: 238 52% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 238 52% 12%;
-    --primary: 244 96% 67%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 222 100% 97%;
-    --secondary-foreground: 238 52% 12%;
-    --muted: 222 100% 97%;
-    --muted-foreground: 237 12% 44%;
-    --accent: 183 86% 46%;
-    --accent-foreground: 238 52% 12%;
-    --destructive: 0 84% 60%;
+    --background: 48 29% 96%;
+    --foreground: 48 9% 10%;
+    --card: 48 33% 98%;
+    --card-foreground: 48 9% 10%;
+    --primary: 9 78% 52%;
+    --primary-foreground: 48 33% 98%;
+    --secondary: 45 20% 91%;
+    --secondary-foreground: 48 9% 10%;
+    --muted: 45 18% 91%;
+    --muted-foreground: 45 5% 38%;
+    --accent: 159 47% 36%;
+    --accent-foreground: 48 33% 98%;
+    --destructive: 0 72% 48%;
     --destructive-foreground: 0 0% 100%;
-    --border: 225 38% 90%;
-    --input: 225 38% 90%;
-    --ring: 244 96% 67%;
-    --radius: 1rem;
+    --border: 45 8% 68%;
+    --input: 45 8% 68%;
+    --ring: 9 78% 52%;
+    --radius: 0.25rem;
   }
 
   .dark {
-    --background: 238 42% 8%;
-    --foreground: 220 40% 96%;
-    --card: 237 34% 13%;
-    --card-foreground: 220 40% 96%;
-    --primary: 244 96% 72%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 235 28% 18%;
-    --secondary-foreground: 220 40% 96%;
-    --muted: 235 28% 18%;
-    --muted-foreground: 222 22% 72%;
-    --accent: 183 86% 52%;
-    --accent-foreground: 238 52% 10%;
-    --destructive: 0 72% 58%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 234 22% 25%;
-    --input: 234 22% 25%;
-    --ring: 244 96% 72%;
+    --background: 48 8% 8%;
+    --foreground: 48 20% 92%;
+    --card: 48 7% 11%;
+    --card-foreground: 48 20% 92%;
+    --primary: 9 86% 62%;
+    --primary-foreground: 48 9% 8%;
+    --secondary: 48 6% 16%;
+    --secondary-foreground: 48 20% 92%;
+    --muted: 48 6% 16%;
+    --muted-foreground: 45 8% 66%;
+    --accent: 159 45% 48%;
+    --accent-foreground: 48 9% 8%;
+    --destructive: 0 76% 62%;
+    --destructive-foreground: 48 9% 8%;
+    --border: 48 5% 29%;
+    --input: 48 5% 29%;
+    --ring: 9 86% 62%;
   }
 
   html {
@@ -54,13 +54,21 @@
   * { @apply border-border; }
   body {
     @apply bg-background text-foreground antialiased;
-    background:
-      radial-gradient(circle at 0% 6%, hsl(var(--card) / 0.9) 0, hsl(var(--card) / 0.72) 20%, transparent 42%),
-      radial-gradient(circle at 90% 8%, hsl(var(--primary) / 0.14), transparent 30%),
-      linear-gradient(180deg, hsl(var(--background)) 0%, hsl(var(--card)) 48%, hsl(var(--secondary)) 72%, hsl(var(--background)) 100%);
   }
 
   section { scroll-margin-top: 5rem; }
+
+  summary::-webkit-details-marker { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
 
   ::selection {
     background: rgba(99, 91, 255, 0.18);
@@ -72,28 +80,31 @@
     height: 12px;
   }
 
-  ::-webkit-scrollbar-track {
-    background:
-      linear-gradient(180deg, hsl(var(--background) / 0.96), hsl(var(--secondary) / 0.96));
-  }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
 
   ::-webkit-scrollbar-thumb {
     min-height: 56px;
-    border: 3px solid transparent;
-    border-radius: 999px;
-    background:
-      linear-gradient(180deg, hsl(var(--primary)), hsl(var(--accent))) border-box;
-    background-clip: padding-box;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.36);
+    border: 4px solid hsl(var(--background));
+    border-radius: 0;
+    background: hsl(var(--foreground) / 0.55);
   }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background:
-      linear-gradient(180deg, hsl(var(--primary) / 0.86), hsl(var(--accent) / 0.86)) border-box;
-    background-clip: padding-box;
-  }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary)); }
 
   ::-webkit-scrollbar-corner {
     background: hsl(var(--background));
+  }
+}
+
+@layer components {
+  .upload-stage {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.34) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.34) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .technical-label {
+    @apply font-mono text-[11px] font-bold uppercase tracking-[0.14em];
   }
 }

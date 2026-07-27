@@ -8,18 +8,10 @@ import { Button } from '@/components/ui/button';
 const themeStorageKey = 'pixconvertly-theme';
 type ThemePreference = 'light' | 'dark';
 
-function getSystemTheme(): ThemePreference {
-  if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    return 'dark';
-  }
-
-  return 'light';
-}
-
 function getInitialTheme(): ThemePreference {
   if (typeof window === 'undefined') return 'light';
   const storedTheme = window.localStorage.getItem(themeStorageKey);
-  return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : getSystemTheme();
+  return storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : 'light';
 }
 
 function applyTheme(theme: ThemePreference) {
@@ -36,19 +28,6 @@ export function ThemeToggle() {
     setTheme(initialTheme);
     applyTheme(initialTheme);
     setIsMounted(true);
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleSystemThemeChange = (event: MediaQueryListEvent) => {
-      const storedTheme = window.localStorage.getItem(themeStorageKey);
-      if (storedTheme === 'dark' || storedTheme === 'light') return;
-
-      const nextTheme = event.matches ? 'dark' : 'light';
-      setTheme(nextTheme);
-      applyTheme(nextTheme);
-    };
-
-    mediaQuery.addEventListener('change', handleSystemThemeChange);
-    return () => mediaQuery.removeEventListener('change', handleSystemThemeChange);
   }, []);
 
   const toggleTheme = () => {
@@ -66,7 +45,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className="size-10 rounded-full border border-border bg-card/70 text-foreground shadow-sm hover:bg-muted"
+      className="size-10 rounded-none border border-foreground/30 bg-background text-foreground shadow-none hover:bg-muted"
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >

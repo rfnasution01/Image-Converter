@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import Link from 'next/link';
-import { Shuffle } from 'lucide-react';
+import { Menu, Shuffle } from 'lucide-react';
 import type { PropsWithChildren } from 'react';
 
 import { PwaInstallPrompt } from '@/components/pwa-install-prompt';
@@ -83,14 +83,14 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
         <AppQueryProvider>
           <div className="min-h-screen bg-background font-sans text-foreground">
-            <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-card/75 backdrop-blur-xl">
-              <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/20 bg-background/95 backdrop-blur-sm">
+              <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-3" aria-label="PixConvertly home">
-                  <span className="grid size-10 place-items-center rounded-2xl bg-primary text-primary-foreground shadow-[0_14px_35px_rgba(99,91,255,0.25)]"><Shuffle className="size-5" strokeWidth={3} /></span>
-                  <span className="font-heading text-xl font-black tracking-tight text-foreground">PixConvertly</span>
+                  <span className="grid size-9 place-items-center border border-foreground bg-foreground text-background"><Shuffle className="size-4" strokeWidth={2.5} /></span>
+                  <span className="font-heading text-lg font-black uppercase tracking-[-0.02em] text-foreground">PixConvertly</span>
                 </Link>
 
-                <nav className="hidden items-center gap-9 text-[14px] font-bold text-foreground md:flex" aria-label="Main navigation">
+                <nav className="hidden items-center gap-8 font-mono text-xs font-bold uppercase tracking-wide text-foreground md:flex" aria-label="Main navigation">
                   <a href="/#converter" className="transition hover:text-primary">Converter</a>
                   <a href="/#how-it-works" className="transition hover:text-primary">How it works</a>
                   <a href="/#conversion-tools" className="transition hover:text-primary">Tools</a>
@@ -99,16 +99,28 @@ export default function RootLayout({ children }: PropsWithChildren) {
                 </nav>
 
                 <div className="flex items-center gap-2">
-                  <PwaInstallPrompt showTrigger />
+                  <div className="hidden sm:block"><PwaInstallPrompt showTrigger /></div>
                   <ThemeToggle />
-                  <Link href="/donate" className="rounded-full bg-primary px-5 py-2.5 text-sm font-extrabold text-primary-foreground shadow-[0_14px_35px_rgba(99,91,255,0.25)] transition hover:-translate-y-0.5 hover:bg-primary/90 focus:outline-none focus:ring-4 focus:ring-primary/20">
+                  <Link href="/donate" className="hidden border border-foreground bg-foreground px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-background transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:inline-flex">
                     Donate
                   </Link>
+                  <details className="group relative md:hidden">
+                    <summary className="grid size-10 cursor-pointer list-none place-items-center rounded-lg border border-border bg-background text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="Open navigation menu">
+                      <Menu className="size-5" />
+                    </summary>
+                    <nav className="absolute right-0 top-12 w-56 overflow-hidden rounded-xl border border-border bg-card p-2 shadow-xl" aria-label="Mobile navigation">
+                      <a href="/#converter" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">Converter</a>
+                      <a href="/#how-it-works" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">How it works</a>
+                      <a href="/#conversion-tools" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">Tools</a>
+                      <Link href="/privacy-policy" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">Privacy</Link>
+                      <Link href="/donate" className="block rounded-lg px-3 py-2.5 text-sm font-bold text-primary hover:bg-muted">Donate</Link>
+                    </nav>
+                  </details>
                 </div>
               </div>
             </header>
 
-            <main className="pt-20">
+            <main className="pt-16">
               <ErrorBoundary>{children}</ErrorBoundary>
             </main>
           </div>
