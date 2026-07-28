@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pixconvertly-pwa-v1';
+const CACHE_NAME = 'pixconvertly-pwa-v2';
 
 const APP_SHELL_URLS = [
   '/',
@@ -17,24 +17,13 @@ const getNextStaticUrls = (html) => {
 const cacheAppShell = async () => {
   const cache = await caches.open(CACHE_NAME);
   await cache.addAll(APP_SHELL_URLS);
-
   const shellResponse = await fetch('/', { cache: 'reload' });
 
-  if (!shellResponse.ok) {
-    return;
-  }
+  if (!shellResponse.ok) return;
 
   await cache.put('/', shellResponse.clone());
-  const shellHtml = await shellResponse.text();
-  const nextStaticUrls = getNextStaticUrls(shellHtml);
-
-  await Promise.all(
-    nextStaticUrls.map((url) =>
-      cache.add(url).catch(() => {
-        // Ignore optional chunk cache failures; runtime caching will retry later.
-      }),
-    ),
-  );
+  const nextStaticUrls = getNextStaticUrls(await shellResponse.text());
+  await Promise.all(nextStaticUrls.map((url) => cache.add(url).catch(() => undefined)));
 };
 
 self.addEventListener('install', (event) => {
@@ -43,34 +32,23 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches
-      .keys()
-      .then((cacheNames) =>
-        Promise.all(
-          cacheNames
-            .filter((cacheName) => cacheName !== CACHE_NAME)
-            .map((cacheName) => caches.delete(cacheName)),
-        ),
-      )
+    caches.keys()
+      .then((names) => Promise.all(names.filter((name) => name !== CACHE_NAME).map((name) => caches.delete(name))))
       .then(() => self.clients.claim()),
   );
 });
 
-const isCacheableStaticRequest = (request) => {
+const isSameOriginStaticRequest = (request) => {
   const url = new URL(request.url);
-
-  return (
-    url.origin === self.location.origin &&
-    ['font', 'image', 'manifest', 'script', 'style', 'worker'].includes(request.destination)
-  );
+  return url.origin === self.location.origin && ['font', 'image', 'manifest', 'script', 'style', 'worker'].includes(request.destination);
 };
 
-const fetchAndCache = async (request, cacheKey = request) => {
+const fetchAndCache = async (request) => {
   const response = await fetch(request);
 
   if (response.ok) {
     const cache = await caches.open(CACHE_NAME);
-    await cache.put(cacheKey, response.clone());
+    await cache.put(request, response.clone());
   }
 
   return response;
@@ -80,24 +58,19 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  if (request.method !== 'GET' || !['http:', 'https:'].includes(url.protocol)) {
-    return;
-  }
+  if (request.method !== 'GET' || !['http:', 'https:'].includes(url.protocol)) return;
 
   if (request.mode === 'navigate') {
     event.respondWith(
-      fetchAndCache(request, '/')
-        .catch(async () => {
-          const cachedPage = await caches.match(request);
-          return cachedPage ?? caches.match('/') ?? Response.error();
-        }),
+      fetchAndCache(request).catch(async () => {
+        const cachedPage = await caches.match(request, { ignoreSearch: true });
+        return cachedPage ?? caches.match('/') ?? Response.error();
+      }),
     );
     return;
   }
 
-  if (isCacheableStaticRequest(request)) {
-    event.respondWith(
-      caches.match(request).then((cachedResponse) => cachedResponse ?? fetchAndCache(request)),
-    );
+  if (isSameOriginStaticRequest(request)) {
+    event.respondWith(caches.match(request).then((cached) => cached ?? fetchAndCache(request)));
   }
 });

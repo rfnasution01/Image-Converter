@@ -1,6 +1,6 @@
 # PixConvertly Image Converter
 
-PixConvertly adalah aplikasi **image converter berbasis browser** yang dibangun dengan **Next.js 14 App Router**, React, TypeScript, dan Tailwind CSS. Aplikasi ini mengonversi gambar langsung di browser menggunakan Canvas API, sehingga file pengguna tidak perlu di-upload ke server.
+PixConvertly adalah aplikasi **image converter berbasis browser** yang dibangun dengan **Next.js 16 App Router**, React, TypeScript, dan Tailwind CSS. Aplikasi ini mengonversi gambar langsung di browser menggunakan Canvas API, sehingga file pengguna tidak perlu di-upload ke server.
 
 ## Fitur utama
 
@@ -38,8 +38,8 @@ Output:
 
 ## Tech stack
 
-- Next.js 14 App Router
-- React 18
+- Next.js 16 App Router
+- React 19
 - TypeScript
 - Tailwind CSS
 - shadcn/ui-style components + Radix UI
@@ -63,10 +63,12 @@ npm run dev
 
 Buka `http://localhost:3000` di browser.
 
+Siapkan environment lokal dari `.env.example`. Build production mewajibkan `NEXT_PUBLIC_SITE_URL` berupa origin HTTPS agar canonical URL, sitemap, robots, dan JSON-LD tidak mengarah ke localhost.
+
 Build production:
 
 ```bash
-npm run build
+NEXT_PUBLIC_SITE_URL=https://domain-anda.com npm run build
 ```
 
 Jalankan production server setelah build:
@@ -75,11 +77,31 @@ Jalankan production server setelah build:
 npm run start
 ```
 
-Lint:
+Quality checks:
 
 ```bash
 npm run lint
+npm run typecheck
+npm test
+npm run check
+npm audit
 ```
+
+## Batas keamanan browser
+
+- Maksimal 20 file per batch.
+- Maksimal 25 MB per file dan 150 MB total input.
+- Output canvas maksimal 8192 px per sisi dan 40 megapixel.
+- Pembuatan ZIP dibatasi 200 MB; batch yang lebih besar harus diunduh satu per satu.
+
+## Checklist deployment
+
+- Set `NEXT_PUBLIC_SITE_URL` ke origin HTTPS production.
+- Set `NEXT_PUBLIC_API_URL` hanya jika API eksternal digunakan.
+- Set `NEXT_PUBLIC_ERROR_REPORTING_ENDPOINT` jika collector error tersedia; kosongkan untuk menonaktifkan reporting.
+- Deploy di Node.js 20.9 atau lebih baru.
+- Jalankan `npm ci`, `npm audit`, dan `npm run check` pada CI.
+- Verifikasi konversi dan instalasi PWA di Chrome, Firefox, Safari, serta perangkat mobile.
 
 ## Struktur singkat
 

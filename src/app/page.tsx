@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import { getSiteUrl } from '@/lib/site';
 import { HomePage } from '@/screens/home-page';
 
 export const metadata: Metadata = {
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const siteUrl = getSiteUrl();
 
 const faqStructuredData = [
   {

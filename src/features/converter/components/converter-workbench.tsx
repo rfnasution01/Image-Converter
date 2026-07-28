@@ -6,15 +6,22 @@ import { ChangeEvent, DragEvent, useCallback, useEffect, useMemo, useRef, useSta
 import { Button } from '@/components/ui/button';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { defaultConversionQuality, formatOptions } from '@/features/converter/constants';
-import { convertWithCanvas } from '@/features/converter/image-conversion';
+import { convertWithCanvas, maxCanvasDimension } from '@/features/converter/image-conversion';
 import type { ConversionProgress, ConversionSettings, ImageItem, OutputFormat, ResizeMode } from '@/features/converter/types';
 import { downloadBlob, formatFileSize, getBaseName, getFormatMeta, getUniqueFileName, isSupportedInputFile, releaseConvertedImageUrls, releaseImageUrls, supportsCanvasOutputFormat } from '@/features/converter/utils';
 import { cn } from '@/lib/utils';
 
 const onboardingStorageKey = 'pixconvertly-onboarding-completed';
-const maxResizeDimension = 12000;
+const maxResizeDimension = maxCanvasDimension;
 const maxResizePercentage = 500;
-const conversionConcurrencyLimit = 3;
+const maxFilesPerBatch = 20;
+const maxFileSizeBytes = 25 * 1024 * 1024;
+const maxBatchSizeBytes = 150 * 1024 * 1024;
+const maxZipSizeBytes = 200 * 1024 * 1024;
+
+function getConversionConcurrency() {
+  return window.matchMedia('(max-width: 768px)').matches ? 1 : 2;
+}
 
 const onboardingSteps = [
   {
@@ -379,7 +386,7 @@ export function ConverterWorkbench() {
       }
     };
 
-    const workers = Array.from({ length: Math.min(conversionConcurrencyLimit, items.length) }, () => processNextItem());
+    const workers = Array.from({ length: Math.min(getConversionConcurrency(), items.length) }, () => processNextItem());
     await Promise.all(workers);
 
     if (conversionRunIdRef.current === runId) {
@@ -389,14 +396,34 @@ export function ConverterWorkbench() {
 
   const handleFileUpload = (files: FileList | File[]) => {
     const incomingFiles = Array.from(files);
-    const validFiles = incomingFiles.filter(isSupportedInputFile);
+    const currentFiles = imagesRef.current;
+    const availableSlots = Math.max(0, maxFilesPerBatch - currentFiles.length);
+    const currentBatchSize = currentFiles.reduce((total, item) => total + item.file.size, 0);
+    let acceptedBatchSize = currentBatchSize;
+    let skippedFiles = 0;
+
+    const validFiles = incomingFiles.filter((file) => {
+      const isAccepted = isSupportedInputFile(file)
+        && file.size <= maxFileSizeBytes
+        && acceptedBatchSize + file.size <= maxBatchSizeBytes;
+
+      if (!isAccepted) {
+        skippedFiles += 1;
+        return false;
+      }
+
+      acceptedBatchSize += file.size;
+      return true;
+    }).slice(0, availableSlots);
+
+    skippedFiles += Math.max(0, incomingFiles.length - skippedFiles - validFiles.length);
 
     if (validFiles.length === 0) {
-      setUploadError('Please upload JPG, PNG, WebP, or HEIC/HEIF images. Other file types are not supported yet.');
+      setUploadError(`No files were added. Use up to ${maxFilesPerBatch} supported images, ${formatFileSize(maxFileSizeBytes)} each and ${formatFileSize(maxBatchSizeBytes)} total.`);
       return;
     }
 
-    setUploadError(incomingFiles.length !== validFiles.length ? 'Some files were skipped because only JPG, PNG, WebP, and HEIC/HEIF images are supported. HEIC conversion may vary by browser/device.' : null);
+    setUploadError(skippedFiles > 0 ? `${skippedFiles} file(s) were skipped due to format, file-size, batch-size, or file-count limits.` : null);
 
     const uploadedItems: ImageItem[] = validFiles.map((file) => ({
       id: `${file.name}-${file.lastModified}-${crypto.randomUUID()}`,
@@ -488,6 +515,12 @@ export function ConverterWorkbench() {
     setIsZipping(true);
 
     try {
+      const totalOutputSize = completedImages.reduce((total, image) => total + (image.convertedBlob?.size ?? 0), 0);
+      if (totalOutputSize > maxZipSizeBytes) {
+        setUploadError(`ZIP download is limited to ${formatFileSize(maxZipSizeBytes)} to protect browser memory. Download files individually or use a smaller batch.`);
+        return;
+      }
+
       const JSZip = (await import('jszip')).default;
       const zip = new JSZip();
       const usedFileNames = new Set<string>();
@@ -501,6 +534,8 @@ export function ConverterWorkbench() {
 
       const blob = await zip.generateAsync({ type: 'blob' });
       downloadBlob(blob, `pixconvertly-images-${selectedFormat.extension}.zip`);
+    } catch {
+      setUploadError('Unable to create the ZIP in this browser. Try a smaller batch or download files individually.');
     } finally {
       setIsZipping(false);
     }
@@ -700,6 +735,7 @@ export function ConverterWorkbench() {
                     <p className="mt-6 font-heading text-2xl font-black uppercase tracking-[-0.02em]">Drop images here</p>
                     <p className="mt-2 text-sm text-muted-foreground">or click to browse from your device</p>
                     <p className="mt-5 font-mono text-[11px] font-bold uppercase tracking-wide text-muted-foreground">JPG · PNG · WebP · HEIC/HEIF</p>
+                    <p className="mt-2 text-xs text-muted-foreground">Up to {maxFilesPerBatch} files · {formatFileSize(maxFileSizeBytes)} each · {formatFileSize(maxBatchSizeBytes)} total</p>
                   </div>
                 </button>
 

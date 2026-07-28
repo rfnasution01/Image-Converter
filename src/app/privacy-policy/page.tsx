@@ -100,6 +100,7 @@ export default function PrivacyPolicyPage() {
                 <li><strong>Local preferences:</strong> theme preference, onboarding completion, and PWA prompt dismissal may be saved in your browser local storage.</li>
                 <li><strong>Donation data:</strong> if you choose to donate through a third-party payment service, that provider processes the payment under its own privacy terms.</li>
                 <li><strong>Technical data:</strong> hosting providers may automatically process standard server logs such as IP address, user agent, requested URL, and timestamps for security and operation.</li>
+                <li><strong>Error diagnostics:</strong> when production error reporting is enabled, limited error messages, stack traces, page paths, and component context may be sent to the configured monitoring provider. Image files and conversion output are not included.</li>
               </ul>
             </PolicySection>
 
@@ -108,7 +109,7 @@ export default function PrivacyPolicyPage() {
               <ul>
                 <li>convert, resize, preview, and package image downloads in your browser;</li>
                 <li>remember local interface preferences such as theme and onboarding state;</li>
-                <li>maintain website reliability, security, and abuse prevention;</li>
+                <li>maintain website reliability, diagnose errors, support security, and prevent abuse;</li>
                 <li>respond to lawful requests where required.</li>
               </ul>
             </PolicySection>

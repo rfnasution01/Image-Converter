@@ -4,6 +4,7 @@ import { Component, type ErrorInfo, type PropsWithChildren, type ReactNode } fro
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { reportClientError } from '@/lib/report-error';
 
 type ErrorBoundaryState = { hasError: boolean; error?: Error };
 
@@ -17,7 +18,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    console.error('Error boundary caught:', error, info);
+    reportClientError(error, info.componentStack ?? 'React error boundary');
   }
 
   render() {

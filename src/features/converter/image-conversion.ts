@@ -14,8 +14,8 @@ export type ConversionResult = {
   outputHeight: number;
 };
 
-const maxCanvasDimension = 12000;
-const maxCanvasPixels = 100_000_000;
+export const maxCanvasDimension = 8192;
+export const maxCanvasPixels = 40_000_000;
 
 function loadImage(url: string) {
   return new Promise<LoadedImage>((resolve, reject) => {
@@ -59,11 +59,11 @@ function validateCanvasSize(width: number, height: number) {
   }
 
   if (width > maxCanvasDimension || height > maxCanvasDimension || width * height > maxCanvasPixels) {
-    throw new Error(`Output dimensions are too large. Use up to ${maxCanvasDimension}px per side and keep total pixels below 100MP.`);
+    throw new Error(`Output dimensions are too large. Use up to ${maxCanvasDimension}px per side and keep total pixels below 40MP.`);
   }
 }
 
-function calculateOutputDimensions(originalWidth: number, originalHeight: number, settings: ConversionSettings) {
+export function calculateOutputDimensions(originalWidth: number, originalHeight: number, settings: ConversionSettings) {
   const aspectRatio = originalWidth / originalHeight;
   let outputWidth = originalWidth;
   let outputHeight = originalHeight;

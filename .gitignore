@@ -1,7 +1,11 @@
-node_modules
-dist
+node_modules/
+.next/
+dist/
+coverage/
+*.tsbuildinfo
 .env
-.env.local
+.env.*
+!.env.example
 .DS_Store
 *.local
 .vscode/*

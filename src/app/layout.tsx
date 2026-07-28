@@ -4,13 +4,15 @@ import Link from 'next/link';
 import { Menu, Shuffle } from 'lucide-react';
 import type { PropsWithChildren } from 'react';
 
+import { ErrorMonitoring } from '@/components/error-monitoring';
 import { PwaInstallPrompt } from '@/components/pwa-install-prompt';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { getSiteUrl } from '@/lib/site';
 import { AppQueryProvider } from '@/providers/query-provider';
 import { ErrorBoundary } from '@/shared/components/error-boundary';
 import '@/index.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+const siteUrl = getSiteUrl();
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 const interTight = Inter_Tight({ subsets: ['latin'], variable: '--font-inter-tight', display: 'swap' });
@@ -82,6 +84,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable}`}>
         <AppQueryProvider>
+          <ErrorMonitoring />
           <div className="min-h-screen bg-background font-sans text-foreground">
             <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/20 bg-background/95 backdrop-blur-sm">
               <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
