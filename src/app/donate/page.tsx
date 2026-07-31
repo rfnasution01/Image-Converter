@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: '/donate',
     images: [
       {
-        url: '/favicon/logo.png',
+        url: '/favicon/pixconvertly-logo.svg',
         width: 292,
         height: 315,
         alt: 'PixConvertly logo',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Donate to PixConvertly',
     description: 'Support PixConvertly with crypto or PayPal.',
-    images: ['/favicon/logo.png'],
+    images: ['/favicon/pixconvertly-logo.svg']
   },
 };
 

@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/favicon/logo.png',
+        url: '/favicon/pixconvertly-logo.svg',
         width: 292,
         height: 315,
         alt: 'PixConvertly logo',
@@ -63,16 +63,14 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'PixConvertly - Free Private Image Converter Online',
     description: 'Free online image converter for JPG, PNG, WebP, AVIF, and HEIC/HEIF with private local processing.',
-    images: ['/favicon/logo.png'],
+    images: ['/favicon/pixconvertly-logo.svg']
   },
   icons: {
     icon: [
-      { url: '/favicon/favicon.ico' },
-      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/pixconvertly-logo.svg', type: 'image/svg+xml' }
     ],
-    apple: [{ url: '/favicon/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: ['/favicon/favicon.ico'],
+    apple: [{ url: '/favicon/pixconvertly-logo.svg' }],
+    shortcut: ['/favicon/pixconvertly-logo.svg'],
   },
   alternates: {
     canonical: '/',

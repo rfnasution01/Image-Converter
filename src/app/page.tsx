@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     url: '/',
     images: [
       {
-        url: '/favicon/logo.png',
+        url: '/favicon/pixconvertly-logo.svg',
         width: 292,
         height: 315,
         alt: 'PixConvertly logo',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'PixConvertly Free Online Image Converter',
     description: 'Convert JPG, PNG, WebP, AVIF, and HEIC/HEIF images privately in your browser.',
-    images: ['/favicon/logo.png'],
+    images: ['/favicon/pixconvertly-logo.svg']
   },
 };
 

@@ -116,6 +116,7 @@ export function HomePage() {
             <Link href="/privacy-policy" className="transition hover:text-foreground">Privacy</Link>
             <Link href="/donate" className="transition hover:text-foreground">Support us</Link>
             <span>© {new Date().getFullYear()}</span>
+            <a href="https://nasutionapps.site" target="_blank" rel="noreferrer" className="transition hover:text-foreground">Nasution Corporation</a>
           </div>
         </div>
       </footer>
