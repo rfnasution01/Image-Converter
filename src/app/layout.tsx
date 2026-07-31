@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import Link from 'next/link';
-import { Menu, Shuffle } from 'lucide-react';
+import { Images, Menu } from 'lucide-react';
 import type { PropsWithChildren } from 'react';
 
 import { ErrorMonitoring } from '@/components/error-monitoring';
@@ -86,26 +86,25 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <AppQueryProvider>
           <ErrorMonitoring />
           <div className="min-h-screen bg-background font-sans text-foreground">
-            <header className="fixed inset-x-0 top-0 z-50 border-b border-foreground/20 bg-background/95 backdrop-blur-sm">
+            <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/90 backdrop-blur-lg">
               <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-                <Link href="/" className="flex items-center gap-3" aria-label="PixConvertly home">
-                  <span className="grid size-9 place-items-center border border-foreground bg-foreground text-background"><Shuffle className="size-4" strokeWidth={2.5} /></span>
-                  <span className="font-heading text-lg font-black uppercase tracking-[-0.02em] text-foreground">PixConvertly</span>
+                <Link href="/" className="flex items-center gap-2.5" aria-label="PixConvertly home">
+                  <span className="grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm"><Images className="size-5" strokeWidth={2.2} /></span>
+                  <span className="font-heading text-lg font-bold tracking-[-0.02em] text-foreground">PixConvertly</span>
                 </Link>
 
-                <nav className="hidden items-center gap-8 font-mono text-xs font-bold uppercase tracking-wide text-foreground md:flex" aria-label="Main navigation">
-                  <a href="/#converter" className="transition hover:text-primary">Converter</a>
-                  <a href="/#how-it-works" className="transition hover:text-primary">How it works</a>
-                  <a href="/#conversion-tools" className="transition hover:text-primary">Tools</a>
-                  <Link href="/privacy-policy" className="transition hover:text-primary">Privacy</Link>
-                  <Link href="/donate" className="transition hover:text-primary">Donate</Link>
+                <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground md:flex" aria-label="Main navigation">
+                  <a href="/#converter" className="transition hover:text-foreground">Converter</a>
+                  <a href="/#how-it-works" className="transition hover:text-foreground">How it works</a>
+                  <Link href="/privacy-policy" className="transition hover:text-foreground">Privacy</Link>
+                  <Link href="/donate" className="transition hover:text-foreground">Support</Link>
                 </nav>
 
                 <div className="flex items-center gap-2">
                   <div className="hidden sm:block"><PwaInstallPrompt showTrigger /></div>
                   <ThemeToggle />
-                  <Link href="/donate" className="hidden border border-foreground bg-foreground px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-background transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:inline-flex">
-                    Donate
+                  <Link href="/#converter" className="hidden rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:inline-flex">
+                    Convert images
                   </Link>
                   <details className="group relative md:hidden">
                     <summary className="grid size-10 cursor-pointer list-none place-items-center rounded-lg border border-border bg-background text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label="Open navigation menu">
@@ -114,9 +113,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
                     <nav className="absolute right-0 top-12 w-56 overflow-hidden rounded-xl border border-border bg-card p-2 shadow-xl" aria-label="Mobile navigation">
                       <a href="/#converter" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">Converter</a>
                       <a href="/#how-it-works" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">How it works</a>
-                      <a href="/#conversion-tools" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">Tools</a>
                       <Link href="/privacy-policy" className="block rounded-lg px-3 py-2.5 text-sm font-bold hover:bg-muted">Privacy</Link>
-                      <Link href="/donate" className="block rounded-lg px-3 py-2.5 text-sm font-bold text-primary hover:bg-muted">Donate</Link>
+                      <Link href="/donate" className="block rounded-lg px-3 py-2.5 text-sm font-bold text-primary hover:bg-muted">Support us</Link>
                     </nav>
                   </details>
                 </div>

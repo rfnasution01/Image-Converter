@@ -1,131 +1,103 @@
 import Link from 'next/link';
+import { Check, FileDown, LockKeyhole, MousePointerClick, Upload } from 'lucide-react';
 
 import { ConverterWorkbench } from '@/features/converter/components/converter-workbench';
 
 const steps = [
-  { title: 'Upload images', description: 'Drop JPG, PNG, WebP, or HEIC/HEIF files into the upload area.' },
-  { title: 'Choose format', description: 'Select one output format for all uploaded images.' },
-  { title: 'Convert & download', description: 'Start the conversion, then download one image or a ZIP for multiple files.' },
+  { icon: Upload, title: 'Choose your images', description: 'Select or drop up to 20 JPG, PNG, WebP, or HEIC files.' },
+  { icon: MousePointerClick, title: 'Pick a format', description: 'Choose JPG, PNG, WebP, or AVIF. The recommended settings work for most people.' },
+  { icon: FileDown, title: 'Download', description: 'Save one image directly or download a batch as a ZIP file.' },
 ];
 
 const faqs = [
-  {
-    question: 'Can I use PixConvertly as a JPG to PNG converter?',
-    answer: 'Yes. Upload one or more JPG images, choose PNG as the output format, and download the converted PNG files individually or as a ZIP.',
-  },
-  {
-    question: 'Can PixConvertly convert PNG to WebP for smaller website images?',
-    answer: 'Yes. Choose WebP output, adjust quality if needed, and PixConvertly will convert PNG files locally in your browser for lighter web-friendly images.',
-  },
-  {
-    question: 'Can I convert WebP to JPG?',
-    answer: 'Yes. PixConvertly supports WebP to JPG conversion for compatibility with tools, forms, and platforms that do not accept WebP files.',
-  },
-  {
-    question: 'Are my files uploaded?',
-    answer: 'No. PixConvertly converts images locally in your browser with the Canvas API, so selected files are not uploaded to our server.',
-  },
-  {
-    question: 'Is image metadata removed?',
-    answer: 'Canvas conversion usually strips most embedded metadata, including many EXIF fields. Browser behavior can vary, so avoid treating it as a guaranteed forensic metadata cleaner.',
-  },
-  {
-    question: 'Which formats are supported?',
-    answer: 'You can upload JPG, PNG, WebP, or HEIC/HEIF images and export them as JPG, PNG, WebP, or AVIF when your browser supports AVIF encoding. Batch downloads are packaged as a ZIP file.',
-  },
+  { question: 'Are my images uploaded anywhere?', answer: 'No. Conversion happens locally in your browser, so your images never leave your device.' },
+  { question: 'Which formats are supported?', answer: 'You can upload JPG, PNG, WebP, and HEIC/HEIF images. You can export JPG, PNG, WebP, and AVIF when supported by your browser.' },
+  { question: 'Can I convert several images at once?', answer: 'Yes. Add up to 20 images, convert them together, and download the results as one ZIP file.' },
+  { question: 'Will image quality change?', answer: 'PNG is lossless. For JPG, WebP, and AVIF, the default quality is designed to look excellent while reducing file size. You can adjust it in Advanced settings.' },
+  { question: 'Is metadata removed?', answer: 'Browser conversion usually removes most embedded metadata, including many EXIF fields. This can vary by browser and is not a forensic metadata-removal guarantee.' },
 ];
 
 export function HomePage() {
   return (
     <div className="bg-background text-foreground">
-      <section className="border-b border-foreground/20 px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-12">
-          <aside className="border-l-2 border-primary pl-4">
-            <p className="technical-label text-primary">Utility 001</p>
-            <p className="mt-2 font-mono text-xs leading-5 text-muted-foreground">Browser-native<br />Image processor</p>
-          </aside>
-          <div>
-            <p className="technical-label text-muted-foreground">No cloud · No account · No trace</p>
-            <h1 className="mt-5 max-w-4xl font-heading text-5xl font-black leading-[0.93] tracking-[-0.06em] sm:text-6xl lg:text-[5.25rem]">
-              Your images.<br /><span className="text-primary">Your machine.</span>
-            </h1>
-            <div className="mt-8 grid gap-6 border-t border-foreground/20 pt-5 md:grid-cols-[minmax(0,2fr)_minmax(14rem,1fr)]">
-              <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-                Convert JPG, PNG, WebP, AVIF, and HEIC directly in the browser. Nothing is sent to a server.
-              </p>
-              <ul className="space-y-1 font-mono text-xs font-bold uppercase tracking-wide" aria-label="Product benefits">
-                <li>01 / Local processing</li><li>02 / No watermark</li><li>03 / Batch ZIP export</li>
-              </ul>
-            </div>
+      <section className="px-4 pb-10 pt-16 text-center sm:px-6 sm:pb-14 sm:pt-24 lg:px-8">
+        <div className="mx-auto max-w-4xl">
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-2 text-sm font-semibold text-primary">
+            <LockKeyhole className="size-4" /> Private, on-device conversion
+          </div>
+          <h1 className="mx-auto mt-6 max-w-3xl font-heading text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-6xl">
+            Convert images without the confusion
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
+            A simple image converter that works in your browser. No uploads, no account, no watermark.
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            {['Free to use', 'Batch conversion', 'Your files stay private'].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5"><Check className="size-4 text-accent" />{item}</span>
+            ))}
           </div>
         </div>
       </section>
 
       <ConverterWorkbench />
 
-      <section id="how-it-works" className="border-y border-foreground/20 bg-secondary/40 px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 grid gap-3 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-12">
-            <p className="technical-label text-primary">Process</p>
-            <h2 className="max-w-2xl font-heading text-4xl font-black leading-none tracking-[-0.05em] text-foreground">Three actions. No hidden upload.</h2>
+      <section id="how-it-works" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="text-center">
+            <p className="text-sm font-semibold text-primary">HOW IT WORKS</p>
+            <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">Done in three simple steps</h2>
           </div>
-          <div className="grid border-y border-border md:grid-cols-3 md:divide-x md:divide-border">
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {steps.map((step, index) => (
-              <div key={step.title} className="border-b border-border py-7 last:border-b-0 md:border-b-0 md:px-7 md:first:pl-0 md:last:pr-0">
-                <div className="font-mono text-xs font-bold text-primary">0{index + 1}</div>
-                <h2 className="mt-5 font-heading text-xl font-black tracking-tight">{step.title}</h2>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{step.description}</p>
-              </div>
+              <article key={step.title} className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <span className="grid size-11 place-items-center rounded-xl bg-primary/10 text-primary"><step.icon className="size-5" /></span>
+                  <span className="text-sm font-semibold text-muted-foreground">0{index + 1}</span>
+                </div>
+                <h3 className="mt-5 text-lg font-bold">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{step.description}</p>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="conversion-tools" className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 grid gap-4 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-12">
-            <p className="technical-label text-primary">Format index</p>
+      <section id="conversion-tools" className="border-y border-border bg-secondary/45 px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="grid items-start gap-10 md:grid-cols-2">
             <div>
-              <h2 className="max-w-3xl font-heading text-4xl font-black leading-none tracking-[-0.05em] text-foreground">Common routes through the converter.</h2>
-              <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground">One workspace for routine format changes and batch delivery—without a server in the middle.</p>
+              <p className="text-sm font-semibold text-primary">ONE TOOL, EVERYDAY FORMATS</p>
+              <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">The right format for wherever your image is going</h2>
+              <p className="mt-4 leading-7 text-muted-foreground">Use WebP for smaller website images, PNG for transparency, or JPG for broad compatibility.</p>
             </div>
-          </div>
-          <div className="grid border-t border-border md:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-border">
-            <article className="border-b border-border py-6 lg:px-5 lg:first:pl-0">
-              <h3 className="text-base font-black text-foreground">JPG to PNG converter</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Create PNG copies from JPG photos for design workflows, screenshots, and archival needs.</p>
-            </article>
-            <article className="border-b border-border py-6 lg:px-5">
-              <h3 className="text-base font-black text-foreground">PNG to WebP converter</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Optimize PNG images into WebP with quality control to help reduce website asset size.</p>
-            </article>
-            <article className="border-b border-border py-6 lg:px-5">
-              <h3 className="text-base font-black text-foreground">WebP to JPG converter</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Convert WebP images to JPG for apps, upload forms, and platforms that need wider compatibility.</p>
-            </article>
-            <article className="border-b border-border py-6 lg:px-5 lg:last:pr-0">
-              <h3 className="text-base font-black text-foreground">Batch image converter</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">Convert multiple images at once, track progress, compare file sizes, and download everything as a ZIP.</p>
-            </article>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                ['JPG → PNG', 'For transparency and editing'],
+                ['PNG → WebP', 'For faster websites'],
+                ['WebP → JPG', 'For wider compatibility'],
+                ['HEIC → JPG', 'For easy sharing'],
+              ].map(([title, description]) => (
+                <div key={title} className="rounded-xl border border-border bg-card p-4">
+                  <h3 className="font-bold">{title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="faq" className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-12 grid gap-4 md:grid-cols-[9rem_minmax(0,1fr)] md:gap-12">
-            <p className="technical-label text-primary">Field notes</p>
-            <div>
-              <h2 className="max-w-2xl font-heading text-4xl font-black leading-none tracking-[-0.05em] text-foreground">Questions before you process.</h2>
-              <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">Format support, privacy, metadata, and batch conversion.</p>
-            </div>
+      <section id="faq" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <p className="text-sm font-semibold text-primary">FAQ</p>
+            <h2 className="mt-3 font-heading text-3xl font-bold tracking-tight sm:text-4xl">Good to know</h2>
           </div>
-          <div className="mx-auto max-w-3xl divide-y divide-border border-y border-border">
+          <div className="mt-10 divide-y divide-border border-y border-border">
             {faqs.map((faq) => (
-              <details key={faq.question} className="group py-1">
-                <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 text-left text-base font-black text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                  {faq.question}
-                  <span aria-hidden="true" className="font-mono text-primary transition-transform group-open:rotate-45">+</span>
+              <details key={faq.question} className="group">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-left font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                  {faq.question}<span aria-hidden="true" className="text-xl font-light text-primary transition-transform group-open:rotate-45">+</span>
                 </summary>
                 <p className="max-w-2xl pb-5 text-sm leading-6 text-muted-foreground">{faq.answer}</p>
               </details>
@@ -134,38 +106,19 @@ export function HomePage() {
         </div>
       </section>
 
-      <footer id="privacy" className="border-t-4 border-primary bg-foreground px-4 py-14 text-background sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <div>
-              <h2 className="font-heading text-3xl font-black tracking-tight">PixConvertly</h2>
-              <p className="mt-4 leading-7 text-background/60">A free, private online image converter for JPG, PNG, WebP, AVIF, and HEIC/HEIF files.</p>
-            </div>
-            <div>
-              <h2 className="text-lg font-bold">Available tools</h2>
-              <ul className="mt-4 space-y-3 text-background/60">
-                <li>JPG to PNG/WebP/AVIF</li>
-                <li>PNG to JPG/WebP/AVIF</li>
-                <li>WebP/HEIC to JPG/PNG/WebP</li>
-                <li>Batch ZIP download</li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="text-lg font-bold">Privacy first</h2>
-              <p className="mt-4 leading-7 text-background/60">Your images are processed in your browser and never leave your device.</p>
-              <p className="mt-3 leading-7 text-background/60">Conversion through canvas usually strips most embedded metadata, including many EXIF fields, without claiming guaranteed removal in every browser.</p>
-            </div>
+      <footer className="border-t border-border bg-card px-4 py-10 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-6 sm:flex-row sm:items-center">
+          <div>
+            <p className="font-heading text-lg font-bold">PixConvertly</p>
+            <p className="mt-1 text-sm text-muted-foreground">Simple, private image conversion in your browser.</p>
           </div>
-          <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-background/20 pt-7 font-mono text-xs uppercase tracking-wide text-background/60">
-            <div>
-              <p>© {new Date().getFullYear()} PixConvertly. All rights reserved.</p>
-              <p className="mt-1">A product by <span className="font-bold text-background">Nasution Corp.</span></p>
-            </div>
-            <Link href="/privacy-policy" className="font-bold transition hover:text-primary">Privacy Policy</Link>
+          <div className="flex items-center gap-5 text-sm text-muted-foreground">
+            <Link href="/privacy-policy" className="transition hover:text-foreground">Privacy</Link>
+            <Link href="/donate" className="transition hover:text-foreground">Support us</Link>
+            <span>© {new Date().getFullYear()}</span>
           </div>
         </div>
       </footer>
-
     </div>
   );
 }

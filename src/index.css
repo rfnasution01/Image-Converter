@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 48 29% 96%;
-    --foreground: 48 9% 10%;
-    --card: 48 33% 98%;
-    --card-foreground: 48 9% 10%;
-    --primary: 9 78% 52%;
-    --primary-foreground: 48 33% 98%;
-    --secondary: 45 20% 91%;
-    --secondary-foreground: 48 9% 10%;
-    --muted: 45 18% 91%;
-    --muted-foreground: 45 5% 38%;
-    --accent: 159 47% 36%;
-    --accent-foreground: 48 33% 98%;
-    --destructive: 0 72% 48%;
+    --background: 220 33% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 27% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 27% 96%;
+    --muted-foreground: 215 16% 44%;
+    --accent: 160 84% 32%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 45 8% 68%;
-    --input: 45 8% 68%;
-    --ring: 9 78% 52%;
-    --radius: 0.25rem;
+    --border: 220 20% 88%;
+    --input: 220 20% 84%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 48 8% 8%;
-    --foreground: 48 20% 92%;
-    --card: 48 7% 11%;
-    --card-foreground: 48 20% 92%;
-    --primary: 9 86% 62%;
-    --primary-foreground: 48 9% 8%;
-    --secondary: 48 6% 16%;
-    --secondary-foreground: 48 20% 92%;
-    --muted: 48 6% 16%;
-    --muted-foreground: 45 8% 66%;
-    --accent: 159 45% 48%;
-    --accent-foreground: 48 9% 8%;
-    --destructive: 0 76% 62%;
-    --destructive-foreground: 48 9% 8%;
-    --border: 48 5% 29%;
-    --input: 48 5% 29%;
-    --ring: 9 86% 62%;
+    --background: 222 47% 7%;
+    --foreground: 210 40% 96%;
+    --card: 222 36% 10%;
+    --card-foreground: 210 40% 96%;
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 47% 8%;
+    --secondary: 217 28% 15%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 217 28% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 160 70% 45%;
+    --accent-foreground: 222 47% 8%;
+    --destructive: 0 72% 61%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 23% 22%;
+    --input: 217 23% 28%;
+    --ring: 217 91% 65%;
   }
 
   html {
@@ -71,7 +71,7 @@
   }
 
   ::selection {
-    background: rgba(99, 91, 255, 0.18);
+    background: hsl(var(--primary) / 0.18);
     color: hsl(var(--foreground));
   }
 
@@ -98,10 +98,7 @@
 
 @layer components {
   .upload-stage {
-    background-image:
-      linear-gradient(hsl(var(--border) / 0.34) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.34) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background-image: radial-gradient(circle at center, hsl(var(--primary) / 0.055), transparent 64%);
   }
 
   .technical-label {

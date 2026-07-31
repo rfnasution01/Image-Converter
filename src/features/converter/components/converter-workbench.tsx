@@ -680,34 +680,25 @@ export function ConverterWorkbench() {
       <div className="sr-only" role="status" aria-live="polite" aria-atomic="true">
         {liveStatusMessage}
       </div>
-      <section id="hero-demo" className="relative px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+      <section id="hero-demo" className="relative px-4 pb-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <div id="converter" className="overflow-clip border-2 border-foreground bg-card">
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-foreground bg-foreground px-5 py-3 text-background sm:px-6">
+          <div id="converter" className="overflow-clip rounded-2xl border border-border bg-card shadow-[0_20px_60px_-28px_hsl(var(--foreground)/0.28)]">
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border px-5 py-4 sm:px-7">
               <div>
-                <p className="font-mono text-xs font-extrabold uppercase tracking-[0.16em] text-primary">PX / Conversion desk</p>
-                <p className="mt-1 font-mono text-[11px] text-background/55">Local session · files never transmitted</p>
+                <p className="font-heading text-lg font-bold text-foreground">Image converter</p>
+                <p className="mt-0.5 text-xs text-muted-foreground">Your images are processed securely on this device</p>
               </div>
-              <div className="flex items-center gap-4">
-                <ol className="hidden items-center gap-2 font-mono text-[11px] font-bold text-background/50 sm:flex" aria-label="Conversion steps">
-                  <li className={cn(images.length === 0 && 'text-primary')}>01 FILES</li>
-                  <li aria-hidden="true">/</li>
-                  <li className={cn(images.length > 0 && completedImages.length === 0 && 'text-primary')}>02 OUTPUT</li>
-                  <li aria-hidden="true">/</li>
-                  <li className={cn(completedImages.length > 0 && 'text-primary')}>03 READY</li>
-                </ol>
-                <Button ref={onboardingTriggerRef} type="button" variant="outline" onClick={openOnboardingFromStart} className="h-9 rounded-none border-background/30 bg-transparent font-mono text-xs text-background hover:bg-background hover:text-foreground">
-                  <CircleHelp className="size-4" /> Guide
-                </Button>
-              </div>
+              <Button ref={onboardingTriggerRef} type="button" variant="ghost" onClick={openOnboardingFromStart} className="h-9 rounded-lg px-3 text-sm font-semibold text-muted-foreground hover:text-foreground">
+                <CircleHelp className="size-4" /> How to use
+              </Button>
             </div>
 
             <div className="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(22rem,0.65fr)] lg:items-start">
               <div className="space-y-5 p-5 sm:p-7 lg:p-8">
                 <div>
-                  <p className="technical-label text-primary">Input / 01</p>
-                  <h2 className="mt-1 text-xl font-black text-foreground">Load source files</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">Drag files here or click the upload area.</p>
+                  <p className="text-sm font-semibold text-primary">STEP 1</p>
+                  <h2 className="mt-1 text-xl font-bold text-foreground">Add your images</h2>
+                  <p className="mt-1 text-sm text-muted-foreground">Choose files from your device or drag them below.</p>
                 </div>
 
                 <input ref={fileInputRef} type="file" accept="image/png,image/jpeg,image/webp,image/heic,image/heif,.heic,.heif" multiple className="sr-only" tabIndex={-1} onChange={handleInputChange} />
@@ -723,30 +714,30 @@ export function ConverterWorkbench() {
                   }}
                   onDragLeave={() => setIsDragging(false)}
                   className={cn(
-                    'upload-stage group grid min-h-[280px] w-full cursor-pointer place-items-center overflow-hidden border border-dashed border-foreground/50 bg-background p-8 text-center transition-[border-color,background-color] duration-150 hover:border-primary hover:bg-primary/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                    'upload-stage group grid min-h-[250px] w-full cursor-pointer place-items-center overflow-hidden rounded-xl border-2 border-dashed border-input bg-secondary/35 p-8 text-center transition-[border-color,background-color] duration-150 hover:border-primary hover:bg-primary/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
                     isDragging && 'border-primary bg-primary/[0.06]',
                   )}
                   aria-label="Upload JPG, PNG, WebP, or HEIC/HEIF images"
                 >
                   <div>
-                    <div className="mx-auto grid size-14 place-items-center border border-foreground bg-foreground text-background transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
-                      <UploadCloud className="size-8" />
+                    <div className="mx-auto grid size-14 place-items-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                      <UploadCloud className="size-7" />
                     </div>
-                    <p className="mt-6 font-heading text-2xl font-black uppercase tracking-[-0.02em]">Drop images here</p>
-                    <p className="mt-2 text-sm text-muted-foreground">or click to browse from your device</p>
-                    <p className="mt-5 font-mono text-[11px] font-bold uppercase tracking-wide text-muted-foreground">JPG · PNG · WebP · HEIC/HEIF</p>
+                    <p className="mt-5 font-heading text-xl font-bold tracking-tight">Drop images here</p>
+                    <p className="mt-2 text-sm text-muted-foreground"><span className="font-semibold text-primary">Browse files</span> from your device</p>
+                    <p className="mt-5 text-xs font-medium text-muted-foreground">JPG · PNG · WebP · HEIC/HEIF</p>
                     <p className="mt-2 text-xs text-muted-foreground">Up to {maxFilesPerBatch} files · {formatFileSize(maxFileSizeBytes)} each · {formatFileSize(maxBatchSizeBytes)} total</p>
                   </div>
                 </button>
 
                 {uploadError ? <p role="alert" className="border-l-4 border-amber-600 bg-amber-500/10 px-4 py-3 text-sm font-medium text-amber-800 dark:text-amber-200">{uploadError}</p> : null}
 
-                <section id="tour-download" className="border-t border-foreground/20 pt-6">
+                <section id="tour-download" className="border-t border-border pt-6">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className="technical-label text-primary">Output / 03</p>
-                      <h2 className="mt-1 text-xl font-black text-foreground">Processed files</h2>
-                      <p className="mt-1 text-sm text-muted-foreground">Converted files will appear below.</p>
+                      <p className="text-sm font-semibold text-primary">YOUR FILES</p>
+                      <h2 className="mt-1 text-xl font-bold text-foreground">Images</h2>
+                      <p className="mt-1 text-sm text-muted-foreground">Review and download your converted images here.</p>
                     </div>
                     {images.length > 0 ? (
                       <Button type="button" variant="ghost" size="sm" onClick={clearImages} className="text-muted-foreground hover:text-foreground" aria-label="Clear all uploaded images">
@@ -809,7 +800,7 @@ export function ConverterWorkbench() {
 
                   <div className={cn('mt-4 space-y-3', images.length > 4 && 'max-h-[32rem] overflow-y-auto pr-1')}>
                     {images.length === 0 ? (
-                      <div className="grid min-h-[160px] place-items-center border border-dashed border-foreground/30 bg-background p-6 text-center">
+                      <div className="grid min-h-[140px] place-items-center rounded-xl border border-dashed border-border bg-secondary/25 p-6 text-center">
                         <div>
                           <ImageIcon className="mx-auto size-10 text-muted-foreground" />
                           <p className="mt-3 font-semibold text-foreground">No images uploaded yet</p>
@@ -878,20 +869,20 @@ export function ConverterWorkbench() {
                     )}
                   </div>
 
-                  <Button className="sticky bottom-3 mt-4 h-12 w-full rounded-none border border-foreground bg-foreground text-sm font-extrabold uppercase tracking-wide text-background shadow-none transition-colors hover:bg-primary hover:text-primary-foreground active:bg-primary/90 lg:static" disabled={completedImages.length === 0 || isProcessing || isZipping || Boolean(resizeError)} onClick={() => void handlePrimaryDownload()} aria-label={primaryButtonLabel}>
+                  <Button className="sticky bottom-3 mt-4 h-12 w-full rounded-lg bg-foreground text-sm font-semibold text-background shadow-sm transition-colors hover:bg-foreground/90 active:bg-foreground/80 lg:static" disabled={completedImages.length === 0 || isProcessing || isZipping || Boolean(resizeError)} onClick={() => void handlePrimaryDownload()} aria-label={primaryButtonLabel}>
                     {completedImages.length > 1 ? <FileArchive className="size-4" /> : <Download className="size-4" />} {primaryButtonLabel}
                   </Button>
                 </section>
               </div>
 
-              <aside className="space-y-5 border-t border-foreground bg-secondary/35 p-5 sm:p-7 lg:border-l lg:border-t-0 lg:p-8">
+              <aside className="space-y-5 border-t border-border bg-secondary/40 p-5 sm:p-7 lg:border-l lg:border-t-0 lg:p-8">
                 <div>
-                  <p className="technical-label text-primary">Settings / 02</p>
-                  <h2 className="mt-2 text-xl font-black text-foreground">Define the output</h2>
-                  <p className="mt-1 text-sm text-muted-foreground">This format will be applied to all uploaded images.</p>
+                  <p className="text-sm font-semibold text-primary">STEP 2</p>
+                  <h2 className="mt-1 text-xl font-bold text-foreground">Choose a format</h2>
+                  <p className="mt-1 text-sm text-muted-foreground">One format will be used for all images.</p>
                 </div>
 
-                <RadioGroup id="tour-format" value={outputFormat} onValueChange={(value) => handleFormatChange(value as OutputFormat)} aria-label="Output format" className="grid grid-cols-2 border border-foreground/30 bg-background sm:grid-cols-4">
+                <RadioGroup id="tour-format" value={outputFormat} onValueChange={(value) => handleFormatChange(value as OutputFormat)} aria-label="Output format" className="grid grid-cols-2 overflow-hidden rounded-xl border border-border bg-background sm:grid-cols-4">
                   {formatOptions.map((option) => {
                     const isAvifOption = option.value === 'image/avif';
                     const isDisabled = isAvifOption && !isAvifSupported;
@@ -905,8 +896,8 @@ export function ConverterWorkbench() {
                         title={isDisabled ? disabledReason : option.description}
                         aria-describedby={isDisabled ? 'avif-support-note' : undefined}
                         className={cn(
-                          'h-auto w-full rounded-none border-0 border-r border-foreground/20 px-3 py-3 text-left transition-colors last:border-r-0 focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-55 [&>div:first-child]:hidden',
-                          outputFormat === option.value ? 'bg-foreground text-background shadow-none' : 'bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground',
+                          'h-auto w-full rounded-none border-0 border-r border-border px-3 py-3 text-left transition-colors last:border-r-0 focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-55 [&>div:first-child]:hidden',
+                          outputFormat === option.value ? 'bg-primary text-primary-foreground shadow-none' : 'bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground',
                         )}
                       >
                         <span className="flex items-center justify-between gap-2">
@@ -920,13 +911,13 @@ export function ConverterWorkbench() {
                 </RadioGroup>
                 <p className="text-sm font-medium text-foreground">{selectedFormat.description}</p>
                 <p id="avif-support-note" className="text-xs leading-5 text-muted-foreground">
-                  AVIF export appears only as an enabled option when your browser supports canvas AVIF encoding. HEIC/HEIF uploads are decoded only when selected, so the HEIC converter is lazy-loaded and browser/device support can vary.
+                  AVIF may be unavailable on older browsers. HEIC support can vary by device.
                 </p>
 
                 <Button
                   id="tour-convert"
                   type="button"
-                  className="h-12 w-full rounded-none border border-foreground bg-primary text-sm font-extrabold uppercase tracking-wide text-primary-foreground shadow-none transition-colors hover:bg-foreground hover:text-background disabled:shadow-none"
+                  className="h-12 w-full rounded-lg bg-primary text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 disabled:shadow-none"
                   disabled={images.length === 0 || isProcessing || Boolean(resizeError)}
                   onClick={handleConvertImages}
                 >
@@ -938,11 +929,11 @@ export function ConverterWorkbench() {
                   <p className="text-center text-xs text-muted-foreground">Upload at least one image to enable conversion.</p>
                 ) : null}
 
-                <section className="border-t border-border pt-5">
-                  <div>
-                    <h3 className="text-sm font-black text-foreground">Resize image</h3>
-                    <p className="mt-1 text-xs text-muted-foreground">Keep original size or resize before conversion.</p>
-                  </div>
+                <details className="group border-t border-border pt-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-foreground">
+                    Resize image <span className="text-lg font-light text-muted-foreground transition-transform group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-1 text-xs text-muted-foreground">Optional — keep the original size or resize before conversion.</p>
 
                   <div className="mt-4 grid gap-3 sm:grid-cols-2">
                     <label className="text-xs font-bold text-muted-foreground">
@@ -1013,16 +1004,13 @@ export function ConverterWorkbench() {
                   ) : null}
 
                   {resizeError ? <p role="alert" className="mt-3 border-l-4 border-destructive bg-destructive/10 px-3 py-2 text-xs font-semibold text-destructive">{resizeError}</p> : null}
-                </section>
+                </details>
 
-                <section className="border-t border-border pt-5">
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="text-sm font-black text-foreground">Output quality</h3>
-                      <p className="mt-1 text-xs text-muted-foreground">Adjust JPG/WebP/AVIF compression before download.</p>
-                    </div>
-                    <span className="border border-primary/40 px-2 py-1 font-mono text-xs font-extrabold text-primary">{qualityPercentage}%</span>
-                  </div>
+                <details className="group border-t border-border pt-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-foreground">
+                    Image quality <span className="flex items-center gap-2"><span className="rounded-md bg-primary/10 px-2 py-1 text-xs font-semibold text-primary">{qualityPercentage}%</span><span className="text-lg font-light text-muted-foreground transition-transform group-open:rotate-45">+</span></span>
+                  </summary>
+                  <p className="mt-1 text-xs text-muted-foreground">Optional — adjust file size and visual quality.</p>
                   <label htmlFor="quality-slider" className="sr-only">Output quality</label>
                   <input
                     id="quality-slider"
@@ -1042,7 +1030,7 @@ export function ConverterWorkbench() {
                       <p>PNG is lossless, so the quality slider is disabled and not used for conversion.</p>
                     )}
                   </div>
-                </section>
+                </details>
               </aside>
             </div>
           </div>
