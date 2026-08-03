@@ -63,7 +63,7 @@ npm run dev
 
 Buka `http://localhost:3000` di browser.
 
-Siapkan environment lokal dari `.env.example`. Build production mewajibkan `NEXT_PUBLIC_SITE_URL` berupa origin HTTPS agar canonical URL, sitemap, robots, dan JSON-LD tidak mengarah ke localhost.
+Siapkan environment lokal dari `.env.example`. `NEXT_PUBLIC_SITE_URL` sebaiknya diisi dengan origin HTTPS production agar canonical URL, sitemap, robots, dan JSON-LD konsisten. Pada Vercel, URL production deployment digunakan sebagai fallback jika variabel ini belum disetel.
 
 Build production:
 
@@ -96,7 +96,7 @@ npm audit
 
 ## Checklist deployment
 
-- Set `NEXT_PUBLIC_SITE_URL` ke origin HTTPS production.
+- Set `NEXT_PUBLIC_SITE_URL` ke origin HTTPS production (Vercel menyediakan fallback otomatis).
 - Set `NEXT_PUBLIC_API_URL` hanya jika API eksternal digunakan.
 - Set `NEXT_PUBLIC_ERROR_REPORTING_ENDPOINT` jika collector error tersedia; kosongkan untuk menonaktifkan reporting.
 - Deploy di Node.js 20.9 atau lebih baru.
