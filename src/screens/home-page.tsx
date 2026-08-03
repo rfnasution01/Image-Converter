@@ -115,6 +115,9 @@ export function HomePage() {
           <div className="flex items-center gap-5 text-sm text-muted-foreground">
             <Link href="/privacy-policy" className="transition hover:text-foreground">Privacy</Link>
             <Link href="/donate" className="transition hover:text-foreground">Support us</Link>
+            <a href="https://www.instagram.com/nasution_corp/" target="_blank" rel="noreferrer" className="transition hover:text-foreground">Instagram</a>
+            <a href="https://www.linkedin.com/company/nasution-corporation" target="_blank" rel="noreferrer" className="transition hover:text-foreground">LinkedIn</a>
+            <a href="https://x.com/swy_real" target="_blank" rel="noreferrer" className="transition hover:text-foreground">X</a>
             <span>© {new Date().getFullYear()}</span>
             <a href="https://nasutionapps.site" target="_blank" rel="noreferrer" className="transition hover:text-foreground">Nasution Corporation</a>
           </div>
