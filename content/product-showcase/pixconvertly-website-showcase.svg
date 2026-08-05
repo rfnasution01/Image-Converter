@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071426"/>
+      <stop offset="0.58" stop-color="#0f2c62"/>
+      <stop offset="1" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#60a5fa" stop-opacity=".34"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity=".08"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="28" stdDeviation="30" flood-color="#020617" flood-opacity=".5"/>
+    </filter>
+    <filter id="smallShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity=".16"/>
+    </filter>
+    <clipPath id="screen"><rect x="580" y="80" width="940" height="740" rx="25"/></clipPath>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1430" cy="30" r="410" fill="url(#glow)"/>
+  <circle cx="70" cy="850" r="330" fill="#2563eb" opacity=".17"/>
+  <path d="M0 770C270 685 380 856 650 755s420-18 620-117 260-58 330-40v302H0z" fill="#071426" opacity=".35"/>
+
+  <!-- Brand and message -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="80" y="72" width="58" height="58" rx="16" fill="#2563eb" stroke="#60a5fa" stroke-width="1.5"/>
+    <rect x="94" y="86" width="30" height="30" rx="5" fill="none" stroke="white" stroke-width="2.5"/>
+    <circle cx="103" cy="95" r="2.6" fill="white"/>
+    <path d="M96 112l8-8 5 5 4-4 9 8" fill="none" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="158" y="110" font-size="31" font-weight="700" fill="white">PixConvertly</text>
+
+    <rect x="80" y="224" width="235" height="42" rx="21" fill="#eff6ff" opacity=".11" stroke="#93c5fd" stroke-opacity=".35"/>
+    <circle cx="106" cy="245" r="6" fill="#34d399"/>
+    <text x="124" y="252" font-size="17" font-weight="700" fill="#bfdbfe">PRIVATE BY DESIGN</text>
+
+    <text x="80" y="350" font-size="64" font-weight="700" letter-spacing="-2" fill="white">Image conversion,</text>
+    <text x="80" y="422" font-size="64" font-weight="700" letter-spacing="-2" fill="#93c5fd">made effortless.</text>
+    <text x="80" y="482" font-size="23" fill="#cbd5e1">Convert JPG, PNG, WebP, AVIF, and HEIC</text>
+    <text x="80" y="517" font-size="23" fill="#cbd5e1">directly in your browser.</text>
+
+    <g transform="translate(80 590)">
+      <circle cx="12" cy="12" r="12" fill="#10b981"/>
+      <path d="M6 12l4 4 8-9" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="38" y="20" font-size="20" font-weight="600" fill="#e2e8f0">No server uploads</text>
+      <circle cx="12" cy="61" r="12" fill="#10b981"/>
+      <path d="M6 61l4 4 8-9" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="38" y="69" font-size="20" font-weight="600" fill="#e2e8f0">Batch conversion</text>
+      <circle cx="12" cy="110" r="12" fill="#10b981"/>
+      <path d="M6 110l4 4 8-9" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="38" y="118" font-size="20" font-weight="600" fill="#e2e8f0">Free, no account required</text>
+    </g>
+
+    <rect x="80" y="770" width="310" height="62" rx="14" fill="white"/>
+    <text x="110" y="809" font-size="21" font-weight="700" fill="#1d4ed8">www.pixconvertly.site</text>
+  </g>
+
+  <!-- Product browser -->
+  <g filter="url(#shadow)">
+    <rect x="560" y="60" width="980" height="780" rx="32" fill="#0f172a" stroke="#93c5fd" stroke-opacity=".35" stroke-width="2"/>
+    <rect x="580" y="80" width="940" height="740" rx="25" fill="#f8fafc"/>
+  </g>
+  <g clip-path="url(#screen)" font-family="Arial, Helvetica, sans-serif">
+    <!-- browser chrome -->
+    <rect x="580" y="80" width="940" height="58" fill="#f1f5f9"/>
+    <circle cx="610" cy="109" r="6" fill="#f87171"/><circle cx="632" cy="109" r="6" fill="#fbbf24"/><circle cx="654" cy="109" r="6" fill="#34d399"/>
+    <rect x="700" y="94" width="550" height="30" rx="15" fill="white" stroke="#e2e8f0"/>
+    <circle cx="720" cy="109" r="5" fill="none" stroke="#10b981" stroke-width="2"/>
+    <text x="737" y="115" font-size="13" fill="#64748b">www.pixconvertly.site</text>
+
+    <!-- navigation -->
+    <rect x="580" y="138" width="940" height="62" fill="white"/>
+    <line x1="580" y1="200" x2="1520" y2="200" stroke="#e2e8f0"/>
+    <rect x="610" y="152" width="34" height="34" rx="10" fill="#2563eb"/>
+    <path d="M618 177l8-8 5 5 6-7" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="655" y="176" font-size="19" font-weight="700" fill="#0f172a">PixConvertly</text>
+    <text x="1105" y="175" font-size="13" fill="#64748b">Converter</text>
+    <text x="1190" y="175" font-size="13" fill="#64748b">How it works</text>
+    <text x="1288" y="175" font-size="13" fill="#64748b">Privacy</text>
+    <rect x="1360" y="151" width="130" height="36" rx="8" fill="#2563eb"/>
+    <text x="1381" y="175" font-size="13" font-weight="700" fill="white">Convert images</text>
+
+    <!-- hero -->
+    <rect x="580" y="200" width="940" height="190" fill="#f8fafc"/>
+    <rect x="972" y="224" width="155" height="28" rx="14" fill="#eff6ff"/>
+    <circle cx="990" cy="238" r="5" fill="#10b981"/>
+    <text x="1003" y="243" font-size="11" font-weight="700" fill="#2563eb">ON-DEVICE</text>
+    <text x="735" y="300" font-size="39" font-weight="700" letter-spacing="-1.2" fill="#0f172a">Convert images without the confusion</text>
+    <text x="810" y="340" font-size="17" fill="#64748b">No uploads, no account, no watermark.</text>
+    <text x="875" y="370" font-size="12" fill="#059669">✓ Free to use     ✓ Batch conversion     ✓ Private</text>
+
+    <!-- converter card -->
+    <g filter="url(#smallShadow)">
+      <rect x="640" y="410" width="820" height="370" rx="19" fill="white" stroke="#e2e8f0"/>
+    </g>
+    <text x="670" y="450" font-size="18" font-weight="700" fill="#0f172a">Image converter</text>
+    <text x="670" y="471" font-size="11" fill="#64748b">Your images are processed securely on this device</text>
+    <line x1="640" y1="490" x2="1460" y2="490" stroke="#e2e8f0"/>
+    <line x1="1160" y1="490" x2="1160" y2="780" stroke="#e2e8f0"/>
+
+    <text x="675" y="530" font-size="12" font-weight="700" fill="#2563eb">STEP 1</text>
+    <text x="675" y="556" font-size="20" font-weight="700" fill="#0f172a">Add your images</text>
+    <rect x="675" y="580" width="450" height="155" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="7 7"/>
+    <rect x="863" y="602" width="49" height="49" rx="14" fill="#dbeafe"/>
+    <path d="M887 637v-20m-8 8 8-8 8 8" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="823" y="676" font-size="17" font-weight="700" fill="#0f172a">Drop images here</text>
+    <text x="817" y="701" font-size="12" fill="#64748b">or browse from your device</text>
+
+    <text x="1190" y="530" font-size="12" font-weight="700" fill="#2563eb">STEP 2</text>
+    <text x="1190" y="556" font-size="20" font-weight="700" fill="#0f172a">Choose a format</text>
+    <rect x="1190" y="580" width="240" height="58" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="1191" y="581" width="60" height="56" rx="9" fill="#2563eb"/>
+    <text x="1208" y="616" font-size="14" font-weight="700" fill="white">JPG</text>
+    <text x="1267" y="616" font-size="14" font-weight="700" fill="#64748b">PNG</text>
+    <text x="1324" y="616" font-size="14" font-weight="700" fill="#64748b">WebP</text>
+    <text x="1382" y="616" font-size="14" font-weight="700" fill="#64748b">AVIF</text>
+    <text x="1190" y="667" font-size="13" font-weight="600" fill="#0f172a">Best for photos</text>
+    <rect x="1190" y="694" width="240" height="48" rx="10" fill="#2563eb"/>
+    <text x="1243" y="724" font-size="14" font-weight="700" fill="white">Convert to JPG</text>
+  </g>
+
+  <text x="1510" y="875" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#bfdbfe">A product by Nasution Corporation</text>
+</svg>
