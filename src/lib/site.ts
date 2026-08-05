@@ -3,9 +3,9 @@ const productionSiteUrl = 'https://www.pixconvertly.site';
 
 export function getSiteUrl() {
   const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  const resolvedUrl = configuredUrl || (
-    process.env.NODE_ENV === 'production' ? productionSiteUrl : localSiteUrl
-  );
+  const resolvedUrl = process.env.NODE_ENV === 'production'
+    ? productionSiteUrl
+    : (configuredUrl || localSiteUrl);
 
   const url = new URL(resolvedUrl);
 
